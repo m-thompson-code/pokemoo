@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as cors from 'cors';
 import * as cookieParser from 'cookie-parser';
 
-import axios from 'axios';
+// import axios from 'axios';
 
 import { adminInit } from './admin-init';
 
@@ -31,3 +31,5 @@ app.get('/ping', async (req: express.Request, res: express.Response) => {
 export const helloWorld = functions.https.onRequest((request, response) => {
     response.send("Hello from Firebase!");
 });
+
+export const app_endpoints = functions.https.onRequest(app);
