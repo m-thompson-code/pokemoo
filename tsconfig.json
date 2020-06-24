@@ -25,13 +25,13 @@
         ],
         "paths": {
             "@app/*": [
-            "src/app/*"
+                "src/app/*"
             ],
             "@environment": [
-            "src/environments"
+                "src/environments"
             ],
             "@environment/*": [
-            "src/environments/*"
+                "src/environments/*"
             ],
         },
     },

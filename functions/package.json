@@ -1,7 +1,7 @@
 {
     "name": "functions",
     "scripts": {
-        "lint": "tslint --project tsconfig.json",
+        "lint": "tslint --project tsconfig.json --rules-dir tslint.json",
         "build": "rimraf lib && tsc",
         "serve": "npm run build && firebase emulators:start --only functions",
         "shell": "npm run build && firebase functions:shell",
@@ -12,7 +12,7 @@
     "engines": {
         "node": "10"
     },
-    "main": "lib/index.js",
+    "main": "lib/functions/src/index.js",
     "dependencies": {
         "axios": "^0.19.2",
         "cookie-parser": "^1.4.5",

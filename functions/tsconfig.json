@@ -1,15 +1,22 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "outDir": "lib",
-    "sourceMap": true,
-    "strict": true,
-    "target": "es2017"
-  },
-  "compileOnSave": true,
-  "include": [
-    "src"
-  ]
+    "compileOnSave": true,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "lib",
+        "module": "commonjs",
+        "target": "es2017",
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "sourceMap": true,
+        "strict": true,
+        "paths": {
+            "@src/*": [
+                "src/*"
+            ],
+        },
+    },
+    "include": [
+        "src",
+        "../pokemon_data",
+    ]
 }

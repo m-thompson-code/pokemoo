@@ -1,5 +1,10 @@
 {
   "rules": {
+    // -- Custom rules --
+    // I perfer to order literlas in an order that may be meaningful to the read order
+
+    "object-literal-sort-keys": false,
+
     // -- Strict errors --
     // These lint rules are likely always a good idea.
 
