@@ -30,7 +30,7 @@ export function keys<O>(o: O): (keyof O)[] {
     styleUrls: ['./home.style.scss']
 })
 export class HomeComponent implements OnInit {
-    @ViewChildren('pokeLocationObjs', {read: ElementRef}) private pokeLocationObjsViewChildren!: QueryList<PokeLocationMapObjComponent>;
+    @ViewChildren('pokeLocationObjs') private pokeLocationObjsViewChildren!: QueryList<PokeLocationMapObjComponent>;
 
     public pokemonList: Pokemon[] = [];
     public pokemonLocation?: PokeLocation;
@@ -212,9 +212,20 @@ export class HomeComponent implements OnInit {
                 if (_a.connections.includes(_b.pokeLocation)) {
                     for (const __a of _a.components) {
                         for (const __b of _b.components) {
+                            const pointA = __a.divContainer.nativeElement.parentElement;
+                            const pointB = __b.divContainer.nativeElement.parentElement;
+
+                            if (!pointA || !pointB) {
+                                console.warn("Unexpected missing point");
+                                debugger;
+                                continue;
+                            }
+
                             this.lines.push({
-                                pointA: __a.divContainer.nativeElement,
-                                pointB: __b.divContainer.nativeElement,
+                                pointA: pointA,
+                                pointB: pointB,
+                                // pointA: __a.divContainer.nativeElement.parentElement,
+                                // pointB: __b.divContainer.nativeElement.parentElement,
                                 // pointA: (__a as any).nativeElement as HTMLElement,
                                 // pointB: (__b as any).nativeElement as HTMLElement,
                             });
