@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const route22: PokemonLocationData = {
+export const route22: PokeLocationData = {
     catchMap: {
         Grass: {
             Rattata: {
@@ -112,7 +112,7 @@ export const route22: PokemonLocationData = {
         },
     },
     connections: [
-        "Pokemon League Reception Gate",
+        "Pokemon League Front Gate",
         "Viridian City",
     ],
 };

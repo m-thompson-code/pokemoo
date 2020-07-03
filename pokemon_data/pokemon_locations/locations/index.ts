@@ -31,7 +31,7 @@ export { oneIsland } from './one_island';
 export { outcastIsland } from './outcast_island';
 export { palletTown } from './pallet_town';
 export { pewterCity } from './pewter_city';
-export { pokemonLeagueReceptionGate } from './pokemon_league_reception_gate';
+export { pokemonLeagueFrontGate } from './pokemon_league_front_gate';
 export { pokemonMansion1F } from './pokemon_mansion_1f';
 export { pokemonMansion2F } from './pokemon_mansion_2f';
 export { pokemonMansion3F } from './pokemon_mansion_3f';

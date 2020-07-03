@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const silphCo: PokemonLocationData = {
+export const silphCo: PokeLocationData = {
     catchMap: {// Skipping all of the flours since it doesn't really have any pokemon anyway
         Special: {
             Lapras: {

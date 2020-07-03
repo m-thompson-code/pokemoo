@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeComponent } from '@app/dest/home/home.component';
-import { HomeRoutingModule } from '@app/dest/home/home-routing.module';
+import { HomeComponent } from './home.component';
+import { HomeRoutingModule } from './home-routing.module';
 
-// import { ButtonModule } from '@app/components/button';
+import { LineModule } from '@app/components/line';
+import { PokeLocationMapObjModule } from '@app/components/poke-location-map-obj';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { HomeRoutingModule } from '@app/dest/home/home-routing.module';
         CommonModule,
         HomeRoutingModule,
 
-        // ButtonModule,
+        LineModule,
+        PokeLocationMapObjModule,
     ]
 })
 export class HomeModule { }

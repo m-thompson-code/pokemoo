@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const route24: PokemonLocationData = {
+export const route24: PokeLocationData = {
     catchMap: {
         Grass: {// Mixing version rates
             Caterpie: {

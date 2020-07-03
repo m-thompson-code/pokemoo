@@ -1,7 +1,7 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 import { route2 } from "./route2";
 
-export const route2Pewter: PokemonLocationData = {
+export const route2Pewter: PokeLocationData = {
     catchMap: route2.catchMap,
     connections: [
         "Pewter City",

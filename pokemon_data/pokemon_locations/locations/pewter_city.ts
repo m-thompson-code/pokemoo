@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const pewterCity: PokemonLocationData = {
+export const pewterCity: PokeLocationData = {
     catchMap: {
     },
     connections: [

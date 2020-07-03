@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const vermilionCity: PokemonLocationData = {
+export const vermilionCity: PokeLocationData = {
     catchMap: {
         Special: {
             "Farfetch'd": {

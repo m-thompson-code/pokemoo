@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const fightingDojo: PokemonLocationData = {
+export const fightingDojo: PokeLocationData = {
     catchMap: {
         Special: {
             Hitmonchan: {

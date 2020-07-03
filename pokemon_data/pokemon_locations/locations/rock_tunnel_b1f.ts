@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const rockTunnelB1F: PokemonLocationData = {
+export const rockTunnelB1F: PokeLocationData = {
     catchMap: {
         Cave: {
             Geodude: {

@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const celdadonCondominiums: PokemonLocationData = {
+export const celdadonCondominiums: PokeLocationData = {
     catchMap: {
         Special: {
             Eevee: {

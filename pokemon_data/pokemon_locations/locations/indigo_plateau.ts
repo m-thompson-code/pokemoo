@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const indigoPlateau: PokemonLocationData = {
+export const indigoPlateau: PokeLocationData = {
     catchMap: {
     },
     connections: [

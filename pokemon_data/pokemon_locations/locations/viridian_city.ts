@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const viridianCity: PokemonLocationData = {
+export const viridianCity: PokeLocationData = {
     catchMap: {
         Surfing: {
             Psyduck: {

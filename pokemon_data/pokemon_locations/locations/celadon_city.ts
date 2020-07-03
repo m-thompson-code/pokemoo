@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const celadonCity: PokemonLocationData = {
+export const celadonCity: PokeLocationData = {
     catchMap: {
         Surfing: {
             Psyduck: {

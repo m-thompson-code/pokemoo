@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const pokemonMansion1F: PokemonLocationData = {
+export const pokemonMansion1F: PokeLocationData = {
     catchMap: {// This area has mixed rating on versions, so we had to mix them
         Walking: {
             Rattata: {

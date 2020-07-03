@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const diglettsCave: PokemonLocationData = {
+export const diglettsCave: PokeLocationData = {
     catchMap: {
         Cave: {
             "Diglett": {

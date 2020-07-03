@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const fuchsiaCity: PokemonLocationData = {
+export const fuchsiaCity: PokeLocationData = {
     catchMap: {
         Surfing: {
             Psyduck: {

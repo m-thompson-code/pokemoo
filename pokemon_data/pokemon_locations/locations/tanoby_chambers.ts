@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const tanobyChambers: PokemonLocationData = {
+export const tanobyChambers: PokeLocationData = {
     catchMap: {
         // Unknowns aren't supported yet since we only do gen 1 pokemon for now
     },

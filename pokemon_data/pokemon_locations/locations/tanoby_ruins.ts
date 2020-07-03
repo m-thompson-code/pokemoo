@@ -1,6 +1,6 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
-export const tanobyRuins: PokemonLocationData = {
+export const tanobyRuins: PokeLocationData = {
     catchMap: {
         Surfing: {// Only support for gen 1 means no Mantine from LG, so just using FR
             Tentacool: {

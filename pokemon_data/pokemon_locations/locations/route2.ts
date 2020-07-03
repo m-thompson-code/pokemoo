@@ -1,9 +1,9 @@
-import { PokemonLocationData } from "../../locations";
+import { PokeLocationData } from "../../locations";
 
 // Note that this PokemonData is not used directly
 // It is imported by route2Pewter and route2Viridian
 // This is because Viridian Forest seperates route 2
-export const route2: PokemonLocationData = {
+export const route2: PokeLocationData = {
     catchMap: {
         Grass: {
             Pidgey: {
