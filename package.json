@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "postinstall": "ngcc",
     "start": "ng serve --progress --open",
     "build": "ng build -c=production --aot",
     "deploy": "npm run build && firebase deploy --only hosting",
