@@ -1,3 +1,5 @@
 <div class="container">
-    <p *ngFor="let pokemon of pokemonList">{{ pokemon }}</p>
+    <ng-container *ngIf="!pokemonLocationData">
+        <p *ngFor="let pokemonLocation of pokemonLocations"><a (click)="setPokemonLocation(pokemonLocation)">{{ pokemonLocation }}</p>
+    </ng-container>
 </div>

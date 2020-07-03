@@ -1,43 +1,5 @@
 @import 'variables.scss';
 
-// @mixin home-styles($scale) {
-//     // pass
-// }
-
-// .content {
-//     width: 50%;
-// }
-
-// @include home-styles($desktop_4k_scale);
-
-// @media only screen and (max-width: $desktop_width) {
-//     @include home-styles($desktop_scale);
-// }
-
-// @media only screen and (max-width: $tablet_width) and (orientation: portrait) {
-//     @include home-styles($tablet_scale);
-
-//     .content {
-//         width: 100%;
-//         align-items: center;
-//         text-align: center;
-//     }
-// }
-
-// @media only screen and (max-width: $mobile_width) and (orientation: portrait) {
-//     @include home-styles($mobile_scale);
-
-//     .content {
-//         width: 100%;
-//         align-items: center;
-//         text-align: center;
-//     }
-// }
-
-// @media only screen and (max-width: $landscape_width) and (max-height: $tablet_width) and (orientation: landscape) {
-//     @include home-styles($tablet_scale);
-// }
-
-// @media only screen and (max-width: $landscape_width) and (max-height: $mobile_width) and (orientation: landscape) {
-//     @include home-styles($mobile_scale);
-// }
+.container {
+    padding: 24px;
+}
