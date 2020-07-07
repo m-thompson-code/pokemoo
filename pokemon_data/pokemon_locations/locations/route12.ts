@@ -45,6 +45,13 @@ export const route12: PokeLocationData = {
                 maxLevel: 30,
                 rate: 5,
             },
+            "Farfetch'd": {// Based on Pokemon Yellow (Since Farfetch'd is pretty rare)
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 26,
+                maxLevel: 31,
+                rate: 5,
+            },
         },
         Surfing: {
             Tentacool: {

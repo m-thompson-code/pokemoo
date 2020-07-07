@@ -52,6 +52,13 @@ export const seafoamIslandsB4F: PokeLocationData = {
                 maxLevel: 36,
                 rate: 10,
             },
+            Jynx: {// Included since Jynx is ingame trade only (based on jp blue)
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 26,
+                maxLevel: 30,
+                rate: 10,
+            }
         },
         Surfing: {
             Seel: {

@@ -66,6 +66,13 @@ export const pokemonMansionB1F: PokeLocationData = {
                 maxLevel: 30,
                 rate: 10,
             },
+            Magmar: {// Included since Magmar is hard to get (based on jp blue)
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 28,
+                maxLevel: 36,
+                rate: 5,
+            },
         }
     },
     connections: [

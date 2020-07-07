@@ -29,7 +29,28 @@ export const powerPlant: PokeLocationData = {
                 inLeafGreen: true,
                 minLevel: 32,
                 maxLevel: 35,
+                rate: 10,// Increased it since Grimer is extra and the rate of Electabuzz is pretty bad as it is
+            },
+            Grimer: {// Based on Pokemon Yellow since Grimer is hard to get
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 33,
+                maxLevel: 37,
+                rate: 10,
+            },
+            Muk: {// Based on Pokemon Yellow since Muk is hard to get
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 33,
+                maxLevel: 37,
                 rate: 5,
+            },
+            Voltorb: {// Based on Pokemon Red/Blue since Voltorb is hard to get
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 33,
+                maxLevel: 37,
+                rate: 10,
             },
         },
         Special: {

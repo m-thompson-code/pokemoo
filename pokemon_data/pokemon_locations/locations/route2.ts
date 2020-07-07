@@ -34,6 +34,16 @@ export const route2: PokeLocationData = {
                 maxLevel: 5,
                 rate: 5,
             },
+        },
+        Special: {
+            "Mr. Mime": {// Added here as a gift pokemon since we don't support ingame trades
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 10,
+                maxLevel: 10,
+                rate: 100,
+                note: "Gift Pokemon. Only once per visiting location."
+            }
         }
     },
     connections: [

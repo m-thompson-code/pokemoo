@@ -31,6 +31,13 @@ export const seafoamIslands1F: PokeLocationData = {
                 maxLevel: 30,
                 rate: 11,
             },
+            Jynx: {// Included since Jynx is ingame trade only (based on jp blue)
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 26,
+                maxLevel: 30,
+                rate: 10,
+            }
         }
     },
     connections: [
