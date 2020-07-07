@@ -175,7 +175,9 @@ export const waterPath: PokeLocationData = {
         }
     },
     connections: [
-        "Berry Forest",
         "Three Island",
+        "Six Island",
+        "Ruin Valley",
+        "Green Path",
     ],
 };

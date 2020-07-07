@@ -69,6 +69,6 @@ export const pokemonMansionB1F: PokeLocationData = {
         }
     },
     connections: [
-        "Outcast Island",
+        "Pokemon Mansion 1F",
     ],
 };

@@ -63,6 +63,7 @@ export const route15: PokeLocationData = {
     },
     connections: [
         "Route 14",
-        "Route 16",
+        // "Route 16",// TODO: verify this, this seems incorrect
+        "Fuchsia City",
     ],
 };

@@ -1,52 +1,80 @@
 import { PokeLocationData } from "../../locations";
 
-export const route4: PokeLocationData = {
+export const route23IndigoPlateau: PokeLocationData = {
     catchMap: {
         Grass: {
-            Rattata: {
-                inFireRed: true,
-                inLeafGreen: true,
-                minLevel: 8,
-                maxLevel: 12,
-                rate: 35,
-            },
             Spearow: {
                 inFireRed: true,
                 inLeafGreen: true,
-                minLevel: 8,
-                maxLevel: 12,
-                rate: 35,
+                minLevel: 32,
+                maxLevel: 34,
+                rate: 15,
+            },
+            Fearow: {
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 40,
+                maxLevel: 44,
+                rate: 25,
             },
             Ekans: {
                 inFireRed: true,
                 inLeafGreen: false,
-                minLevel: 6,
-                maxLevel: 12,
-                rate: 25,
+                minLevel: 32,
+                maxLevel: 34,
+                rate: 20,
+            },
+            Arbok: {
+                inFireRed: true,
+                inLeafGreen: false,
+                minLevel: 4,
+                maxLevel: 44,
+                rate: 5,
             },
             Sandshrew: {
                 inFireRed: false,
                 inLeafGreen: true,
-                minLevel: 6,
-                maxLevel: 12,
-                rate: 25,
+                minLevel: 32,
+                maxLevel: 34,
+                rate: 20,
+            },
+            Sandslash: {
+                inFireRed: false,
+                inLeafGreen: true,
+                minLevel: 4,
+                maxLevel: 44,
+                rate: 5,
             },
             Mankey: {
                 inFireRed: true,
                 inLeafGreen: true,
-                minLevel: 10,
-                maxLevel: 12,
+                minLevel: 32,
+                maxLevel: 34,
+                rate: 30,
+            },
+            Primeape: {
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 42,
+                maxLevel: 42,
                 rate: 5,
             },
         },
         Surfing: {
-            Tentacool: {
+            Psyduck: {
                 inFireRed: true,
-                inLeafGreen: true,
-                minLevel: 5,
+                inLeafGreen: false,
+                minLevel: 20,
                 maxLevel: 40,
                 rate: 100,
-            }
+            },
+            Slowpoke: {
+                inFireRed: false,
+                inLeafGreen: true,
+                minLevel: 20,
+                maxLevel: 40,
+                rate: 100,
+            },
         },
         "Old Rod": {
             Magikarp: {
@@ -55,22 +83,22 @@ export const route4: PokeLocationData = {
                 minLevel: 5,
                 maxLevel: 5,
                 rate: 100,
-            }
-        },
-        "Good Rod": {// Mixing versions
-            Horsea: {
-                inFireRed: true,
-                inLeafGreen: true,
-                minLevel: 5,
-                maxLevel: 15,
-                rate: 40,
             },
-            Krabby: {
+        },
+        "Good Rod": {
+            Poliwag: {
                 inFireRed: true,
                 inLeafGreen: true,
                 minLevel: 5,
                 maxLevel: 15,
-                rate: 40,
+                rate: 60,
+            },
+            Goldeen: {
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 5,
+                maxLevel: 15,
+                rate: 20,
             },
             Magikarp: {
                 inFireRed: true,
@@ -81,19 +109,33 @@ export const route4: PokeLocationData = {
             },
         },
         "Super Rod": {
-            Horsea: {
+            Psyduck: {
                 inFireRed: true,
                 inLeafGreen: false,
                 minLevel: 15,
                 maxLevel: 35,
-                rate: 84,
+                rate: 5,
             },
-            Krabby: {
+            Poliwag: {
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 15,
+                maxLevel: 25,
+                rate: 40,
+            },
+            Poliwhirl: {
+                inFireRed: true,
+                inLeafGreen: true,
+                minLevel: 20,
+                maxLevel: 30,
+                rate: 40,
+            },
+            Slowpoke: {
                 inFireRed: false,
                 inLeafGreen: true,
                 minLevel: 15,
                 maxLevel: 35,
-                rate: 84,
+                rate: 5,
             },
             Gyarados: {
                 inFireRed: true,
@@ -102,25 +144,9 @@ export const route4: PokeLocationData = {
                 maxLevel: 25,
                 rate: 15,
             },
-            Psyduck: {
-                inFireRed: true,
-                inLeafGreen: false,
-                minLevel: 25,
-                maxLevel: 35,
-                rate: 1,
-            },
-            Slowpoke: {
-                inFireRed: false,
-                inLeafGreen: true,
-                minLevel: 25,
-                maxLevel: 35,
-                rate: 1,
-            },
         },
     },
     connections: [
-        "Mt. Moon 1F",
-        "Route 3",
-        "Cerulean City",
+        "Victory Road 2F",
     ],
 };

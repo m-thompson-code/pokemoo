@@ -40,9 +40,9 @@ export type SeafoamIslands = "Seafoam Islands 1F" | "Seafoam Islands B1F" | "Sea
 export type Vermilion = "Vermilion City";
 export type Viridian = "Viridian City" | "Viridian Forest" | "Route 2 (Viridian)";
 
-export type PokemonRoutes = "Route 1" | "Route 8" | "Route 10" | "Route 11" | "Route 12" | "Route 13" | "Route 14" | "Route 15" | "Route 16" | "Route 17" | "Route 22" | "Route 23" | "Route 24" | "Route 5" | "Route 6" | "Route 9" | "Route 25";
+export type PokemonRoutes = "Route 1" | "Route 8" | "Route 10" | "Route 11" | "Route 12" | "Route 13" | "Route 14" | "Route 15" | "Route 16" | "Route 17" | "Route 22" | "Route 23 (Victory Road)" | "Route 23 (Indigo Plateau)" | "Route 24" | "Route 5" | "Route 6" | "Route 9" | "Route 25";
 
-export type PokeLocation = "Altering Cave" | "Diglett's Cave" | "Indego Plateau" | "Pallet Town" | "Pokemon League Front Gate" | "Power Plant" | "Rock Tunnel 1F" | "Rock Tunnel B1F" | "Victory Road 1F" | "Victory Road 2F" | "Victory Road 3F" | "Viridian City" | SegiiIslands | Celadon | Cerulean | Cinnabar | Fuchsia | Lavender | Pewter | Saffron | SeafoamIslands | Vermilion | Viridian | PokemonRoutes;
+export type PokeLocation = "Altering Cave" | "Diglett's Cave (Route 2)" | "Diglett's Cave (Route 11)" | "Indego Plateau" | "Pallet Town" | "Pokemon League Front Gate" | "Power Plant" | "Rock Tunnel 1F" | "Rock Tunnel B1F" | "Victory Road 1F" | "Victory Road 2F" | "Victory Road 3F" | "Viridian City" | SegiiIslands | Celadon | Cerulean | Cinnabar | Fuchsia | Lavender | Pewter | Saffron | SeafoamIslands | Vermilion | Viridian | PokemonRoutes;
 
 export type PokeLocationDataMap = {
     [location in PokeLocation]: PokeLocationData;
@@ -64,7 +64,8 @@ export const pokeLocationDataMap: PokeLocationDataMap = {
     "Cerulean Cave 2F": pokeLocationDatas.ceruleanCave2F,
     "Cerulean City": pokeLocationDatas.ceruleanCity,
     "Cinnabar Island": pokeLocationDatas.cinnabarIsland,
-    "Diglett's Cave": pokeLocationDatas.diglettsCave,
+    "Diglett's Cave (Route 2)": pokeLocationDatas.diglettsCaveRoute2,
+    "Diglett's Cave (Route 11)": pokeLocationDatas.diglettsCaveRoute11,
     "Fighting Dojo": pokeLocationDatas.fightingDojo,
     "Five Island": pokeLocationDatas.fiveIsland,
     "Five Isle Meadow": pokeLocationDatas.fiveIsleMeadow,
@@ -120,7 +121,8 @@ export const pokeLocationDataMap: PokeLocationDataMap = {
     "Route 20": pokeLocationDatas.route20,
     "Route 21": pokeLocationDatas.route21,
     "Route 22": pokeLocationDatas.route22,
-    "Route 23": pokeLocationDatas.route23,
+    "Route 23 (Victory Road)": pokeLocationDatas.route23VictoryRoad,
+    "Route 23 (Indigo Plateau)": pokeLocationDatas.route23IndigoPlateau,
     "Route 24": pokeLocationDatas.route24,
     "Route 25": pokeLocationDatas.route25,
     "Route 3": pokeLocationDatas.route3,
@@ -175,7 +177,8 @@ export const pokeLocations: PokeLocation[] = [
     "Cerulean Cave 2F",
     "Cerulean City",
     "Cinnabar Island",
-    "Diglett's Cave",
+    "Diglett's Cave (Route 2)",
+    "Diglett's Cave (Route 11)",
     "Fighting Dojo",
     "Five Island",
     "Five Isle Meadow",
@@ -228,7 +231,8 @@ export const pokeLocations: PokeLocation[] = [
     "Route 20",
     "Route 21",
     "Route 22",
-    "Route 23",
+    "Route 23 (Victory Road)",
+    "Route 23 (Indigo Plateau)",
     "Route 24",
     "Route 25",
     "Route 3",

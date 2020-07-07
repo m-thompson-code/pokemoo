@@ -17,14 +17,14 @@ export const route3: PokeLocationData = {
                 maxLevel: 8,
                 rate: 35,
             },
-            "Nidoran ♀": {// Mixing these rates from both versions
+            "Nidoran [Female]": {// Mixing these rates from both versions
                 inFireRed: true,
                 inLeafGreen: true,
                 minLevel: 6,
                 maxLevel: 6,
                 rate: 7,
             },
-            "Nidoran ♂": {
+            "Nidoran [Male]": {
                 inFireRed: true,
                 inLeafGreen: true,
                 minLevel: 6,

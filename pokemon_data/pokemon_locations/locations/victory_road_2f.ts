@@ -76,7 +76,8 @@ export const victoryRoad2F: PokeLocationData = {
         },
     },
     connections: [
-        "Route 23",
-        "Victory Road 2F",
+        "Victory Road 1F",
+        "Route 23 (Indigo Plateau)",
+        "Victory Road 3F",
     ],
 };

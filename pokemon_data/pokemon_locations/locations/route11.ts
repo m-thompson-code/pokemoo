@@ -112,7 +112,7 @@ export const route11: PokeLocationData = {
         },
     },
     connections: [
-        "Diglett's Cave",
+        "Diglett's Cave (Route 11)",
         "Vermilion City",
         "Route 12",
     ],

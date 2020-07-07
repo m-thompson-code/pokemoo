@@ -170,8 +170,8 @@ export const ceruleanCave1F: PokeLocationData = {
         }
     },
     connections: [
-        // "Cerulean Cave", // By map this is true, but in game, you have to take Route 24
-        "Route 24",
+        "Cerulean City",
+        // "Route 24",// The game forces you to take Route 24 I guess? So maybe that would be better than pointing straight to Cerulean City?
         "Cerulean Cave B1F",
         "Cerulean Cave 2F",
     ],

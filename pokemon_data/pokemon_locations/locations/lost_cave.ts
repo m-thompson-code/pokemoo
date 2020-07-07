@@ -35,5 +35,6 @@ export const lostCave: PokeLocationData = {
     },
     connections: [
         "Five Island",
+        "Resort Gorgeous",
     ],
 };

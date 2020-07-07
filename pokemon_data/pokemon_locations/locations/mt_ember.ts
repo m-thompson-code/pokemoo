@@ -65,8 +65,6 @@ export const mtEmber: PokeLocationData = {
         }
     },
     connections: [
-        "Route 3",
-        "Route 4",
-        "Mt. Moon B1F",
+        "Kindle Road",
     ],
 };

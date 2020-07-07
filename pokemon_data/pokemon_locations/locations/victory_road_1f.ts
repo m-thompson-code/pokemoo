@@ -69,7 +69,7 @@ export const victoryRoad1F: PokeLocationData = {
         },
     },
     connections: [
-        "Route 23",
+        "Route 23 (Victory Road)",
         "Victory Road 2F",
     ],
 };

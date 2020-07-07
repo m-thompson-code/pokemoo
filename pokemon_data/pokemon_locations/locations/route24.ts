@@ -142,6 +142,5 @@ export const route24: PokeLocationData = {
     connections: [
         "Route 25",
         "Cerulean City",
-        "Cerulean Cave 1F",
     ],
 };

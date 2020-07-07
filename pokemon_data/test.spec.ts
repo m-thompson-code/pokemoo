@@ -73,16 +73,21 @@ export const test: () => number = () => {
     if (errors.length) {
         console.error(errors[0].message);
 
-        if (errors.length > 1) {
-            console.error(`${errors.length - 1} errors`);
+        for (let i = 0; i < Math.min(20, errors.length); i++) {
+            console.error(JSON.stringify(errors[i], null, 4));
         }
 
-        console.error(JSON.stringify(errors[0], null, 4));
+        const othersLength = 20;
+        if (errors.length > othersLength) {
+            console.error(`\n... and ${errors.length - othersLength} other error(s)`);
+        }
+
+        console.error(`\n${errors.length} error(s) found`);
 
         throw errors[0];
     }
 
-    console.log(" ~ pokemon_data passes tests");
+    console.log(" ~ pokemon_data passes tests. 0 errors found");
 
     return 1;
 }

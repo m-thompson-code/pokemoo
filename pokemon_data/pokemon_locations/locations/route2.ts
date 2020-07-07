@@ -39,7 +39,7 @@ export const route2: PokeLocationData = {
     connections: [
         "Viridian City",
         "Pewter City",
-        "Diglett's Cave",
+        "Diglett's Cave (Route 2)",
         "Viridian Forest",
     ],
 };

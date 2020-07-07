@@ -5,7 +5,7 @@ export const route2Pewter: PokeLocationData = {
     catchMap: route2.catchMap,
     connections: [
         "Pewter City",
-        "Diglett's Cave",
+        "Diglett's Cave (Route 2)",
         "Viridian Forest",
     ],
 };

@@ -112,7 +112,9 @@ export const route10: PokeLocationData = {
         },
     },
     connections: [
+        "Rock Tunnel 1F",
         "Route 9",
         "Lavender Town",
+        "Power Plant",
     ],
 };

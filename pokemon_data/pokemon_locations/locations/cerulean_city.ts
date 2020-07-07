@@ -8,5 +8,6 @@ export const ceruleanCity: PokeLocationData = {
         "Route 5",
         "Route 9",
         "Route 24",
+        "Cerulean Cave 1F",
     ],
 };

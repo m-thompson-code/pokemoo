@@ -104,6 +104,5 @@ export const memorialPillar: PokeLocationData = {
     },
     connections: [
         "Five Isle Meadow",
-        "Outcast Island",
     ],
 };

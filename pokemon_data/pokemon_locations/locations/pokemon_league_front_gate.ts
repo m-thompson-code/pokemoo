@@ -5,6 +5,6 @@ export const pokemonLeagueFrontGate: PokeLocationData = {
     },
     connections: [
         "Route 22",
-        "Route 23",
+        "Route 23 (Victory Road)",
     ],
 };

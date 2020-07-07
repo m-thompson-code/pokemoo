@@ -1,6 +1,6 @@
 import { PokeLocationData } from "../../locations";
 
-export const route23: PokeLocationData = {
+export const route23VictoryRoad: PokeLocationData = {
     catchMap: {
         Grass: {
             Spearow: {
@@ -149,6 +149,6 @@ export const route23: PokeLocationData = {
     connections: [
         "Pokemon League Front Gate",
         "Victory Road 1F",
-        "Cerulean Cave 1F"
+        // "Cerulean Cave 1F"// TODO: verify, this seems incorrect
     ],
 };

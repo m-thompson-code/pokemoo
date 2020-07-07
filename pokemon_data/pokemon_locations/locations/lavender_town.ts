@@ -7,5 +7,6 @@ export const lavenderTown: PokeLocationData = {
         "Route 8",
         "Route 10",
         "Route 12",
+        "Pokemon Tower 1F",
     ],
 };

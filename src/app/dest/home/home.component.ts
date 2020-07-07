@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
     }
 
     private setTiles(cols: number, rows: number): void {
-        this.tileCol = [];/////////////////
+        this.tileCol = [];
         this.tileRow = [];
 
         for (let i = 0; i < cols; i++) {
@@ -100,23 +100,23 @@ export class HomeComponent implements OnInit {
         // this.pushPokeLocationMapObj("Cape Brink");// TODO: seven islands
         this.pushPokeLocationMapObj("Celadon Condominiums", 9, 5 + .25);
         this.pushPokeLocationMapObj("Celadon City", 9, 5);
-        this.pushPokeLocationMapObj("Cerulean Cave B1F", 12, 2 + .25);
-        this.pushPokeLocationMapObj("Cerulean Cave 1F", 12, 2);
-        this.pushPokeLocationMapObj("Cerulean Cave 2F", 12, 2 - .25);
-        this.pushPokeLocationMapObj("Cerulean City", 12, 2 - .5);
+        this.pushPokeLocationMapObj("Cerulean Cave B1F", 12 - 1, 2 + .25);
+        this.pushPokeLocationMapObj("Cerulean Cave 1F", 12 - 1, 2);
+        this.pushPokeLocationMapObj("Cerulean Cave 2F", 12 - 1, 2 - .25);
+        this.pushPokeLocationMapObj("Cerulean City", 12 - 1, 2 - .5);
         this.pushPokeLocationMapObj("Cinnabar Island", 3, 13);
-        this.pushPokeLocationMapObj("Diglett's Cave", 3, 4);// TODO: handle that this shows up in two spots
-        this.pushPokeLocationMapObj("Diglett's Cave", 13, 8);// TODO: handle that this shows up in two spots
-        this.pushPokeLocationMapObj("Fighting Dojo", 12, 5);
+        this.pushPokeLocationMapObj("Diglett's Cave (Route 2)", 4 + 1, 4 - .25);// TODO: handle that this shows up in two spots
+        this.pushPokeLocationMapObj("Diglett's Cave (Route 11)", 13, 8 - 1);// TODO: handle that this shows up in two spots
+        this.pushPokeLocationMapObj("Fighting Dojo", 12, 5 + .25);
         // this.pushPokeLocationMapObj("Five Island");// TODO: seven islands
         // this.pushPokeLocationMapObj("Five Isle Meadow");// TODO: seven islands
         // this.pushPokeLocationMapObj("Four Island");// TODO: seven islands
-        this.pushPokeLocationMapObj("Fuchsia City", 12, 8);
+        this.pushPokeLocationMapObj("Fuchsia City", 10, 11);
         // this.pushPokeLocationMapObj("Green Path");
-        this.pushPokeLocationMapObj("Indego Plateau", 1, 2);// TODO: Double check this position
+        // this.pushPokeLocationMapObj("Indego Plateau", 1, 2);// TODO: Double check this position// TODO: We aren't doing Indeo Plateau for now
         // this.pushPokeLocationMapObj("Icefall Cave");// TODO: handle this
         // this.pushPokeLocationMapObj("Kindle Road");// TODO: seven islands
-        this.pushPokeLocationMapObj("Lavender Town", 16, 5);
+        this.pushPokeLocationMapObj("Lavender Town", 16, 5 + .5);
         // this.pushPokeLocationMapObj("Lost Cave");
         this.pushPokeLocationMapObj("Power Plant", 16, 3);
         // this.pushPokeLocationMapObj("Memorial Pillar");// TODO: seven islands
@@ -127,58 +127,59 @@ export class HomeComponent implements OnInit {
         // this.pushPokeLocationMapObj("One Island");// TODO: seven islands
         // this.pushPokeLocationMapObj("Outcast Island");// TODO: seven islands
         this.pushPokeLocationMapObj("Pallet Town", 3, 10);
-        this.pushPokeLocationMapObj("Pewter City", 3, 3);
-        this.pushPokeLocationMapObj("Pokemon League Front Gate", 1, 7 - .25);
-        // this.pushPokeLocationMapObj("Pokemon Mansion 1F");
-        // this.pushPokeLocationMapObj("Pokemon Mansion 2F");
-        // this.pushPokeLocationMapObj("Pokemon Mansion 3F");
-        // this.pushPokeLocationMapObj("Pokemon Mansion B1F");
-        // this.pushPokeLocationMapObj("Pokemon Tower 1F");
-        // this.pushPokeLocationMapObj("Pokemon Tower 2F");
-        // this.pushPokeLocationMapObj("Pokemon Tower 3F");
-        // this.pushPokeLocationMapObj("Pokemon Tower 4F");
-        // this.pushPokeLocationMapObj("Pokemon Tower 5F");
-        // this.pushPokeLocationMapObj("Pokemon Tower 6F");
-        // this.pushPokeLocationMapObj("Pokemon Tower 7F");
-        // this.pushPokeLocationMapObj("Resort Gorgeous");
-        // this.pushPokeLocationMapObj("Rock Tunnel 1F");
-        // this.pushPokeLocationMapObj("Rock Tunnel B1F");
-        // this.pushPokeLocationMapObj("Route 1");
-        // this.pushPokeLocationMapObj("Route 10");
-        // this.pushPokeLocationMapObj("Route 11");
-        // this.pushPokeLocationMapObj("Route 12");
-        // this.pushPokeLocationMapObj("Route 13");
-        // this.pushPokeLocationMapObj("Route 14");
-        // this.pushPokeLocationMapObj("Route 15");
-        // this.pushPokeLocationMapObj("Route 16");
-        // this.pushPokeLocationMapObj("Route 17");
-        // this.pushPokeLocationMapObj("Route 18");
-        // this.pushPokeLocationMapObj("Route 19");
-        // this.pushPokeLocationMapObj("Route 2 (Pewter)");
-        // this.pushPokeLocationMapObj("Route 2 (Viridian)");
-        // this.pushPokeLocationMapObj("Route 20");
-        // this.pushPokeLocationMapObj("Route 21");
-        this.pushPokeLocationMapObj("Route 22", 2, 7);
-        this.pushPokeLocationMapObj("Route 23", 1, 5);
-        // this.pushPokeLocationMapObj("Route 24");
-        // this.pushPokeLocationMapObj("Route 25");
-        // this.pushPokeLocationMapObj("Route 3");
-        // this.pushPokeLocationMapObj("Route 4");
-        // this.pushPokeLocationMapObj("Route 5");
-        // this.pushPokeLocationMapObj("Route 6");
-        // this.pushPokeLocationMapObj("Route 7");
-        // this.pushPokeLocationMapObj("Route 8");
-        // this.pushPokeLocationMapObj("Route 9");
-        // this.pushPokeLocationMapObj("Ruin Valley");
-        // this.pushPokeLocationMapObj("Saffron City");
-        // this.pushPokeLocationMapObj("Seafoam Islands 1F");
-        // this.pushPokeLocationMapObj("Seafoam Islands B1F");
-        // this.pushPokeLocationMapObj("Seafoam Islands B2F");
-        // this.pushPokeLocationMapObj("Seafoam Islands B3F");
-        // this.pushPokeLocationMapObj("Seafoam Islands B4F");
+        this.pushPokeLocationMapObj("Pewter City", 3, 3 - 1);
+        this.pushPokeLocationMapObj("Pokemon League Front Gate", 1, 8 - 1);
+        this.pushPokeLocationMapObj("Pokemon Mansion 1F", 3 - 2, 13 + 0);
+        this.pushPokeLocationMapObj("Pokemon Mansion 2F", 3 - 2, 13 - .25);
+        this.pushPokeLocationMapObj("Pokemon Mansion 3F", 3 - 2, 13 - .5);
+        this.pushPokeLocationMapObj("Pokemon Mansion B1F", 3 - 2, 13 + .25);
+        this.pushPokeLocationMapObj("Pokemon Tower 1F", 16, 5 + .25);
+        this.pushPokeLocationMapObj("Pokemon Tower 2F", 16, 5 + 0);
+        this.pushPokeLocationMapObj("Pokemon Tower 3F", 16, 5 - .25);
+        this.pushPokeLocationMapObj("Pokemon Tower 4F", 16, 5 - .5);
+        this.pushPokeLocationMapObj("Pokemon Tower 5F", 16, 5 - .75);
+        this.pushPokeLocationMapObj("Pokemon Tower 6F", 16, 5 - 1);
+        this.pushPokeLocationMapObj("Pokemon Tower 7F", 16, 5 - 1.25);
+        // this.pushPokeLocationMapObj("Resort Gorgeous");// TODO: seven islands
+        this.pushPokeLocationMapObj("Rock Tunnel 1F", 16 - 2.5, 4);
+        this.pushPokeLocationMapObj("Rock Tunnel B1F", 16 - 2.5, 4 + .25);
+        this.pushPokeLocationMapObj("Route 1", 3, 9);
+        this.pushPokeLocationMapObj("Route 10", 16, 2);
+        this.pushPokeLocationMapObj("Route 11", 14, 8 + .25);
+        this.pushPokeLocationMapObj("Route 12", 16, 6);
+        this.pushPokeLocationMapObj("Route 13", 14, 10);
+        this.pushPokeLocationMapObj("Route 14", 13, 10);
+        this.pushPokeLocationMapObj("Route 15", 12, 11);
+        this.pushPokeLocationMapObj("Route 16", 7, 5);
+        this.pushPokeLocationMapObj("Route 17", 6, 8);
+        this.pushPokeLocationMapObj("Route 18", 8, 11);
+        this.pushPokeLocationMapObj("Route 19", 10, 13);
+        this.pushPokeLocationMapObj("Route 2 (Viridian)", 3 + 1, 6);
+        this.pushPokeLocationMapObj("Route 2 (Pewter)", 3, 4);
+        this.pushPokeLocationMapObj("Route 20", 7, 13 - .5);
+        this.pushPokeLocationMapObj("Route 21", 3, 12);
+        this.pushPokeLocationMapObj("Route 22", 2, 8 + .25);
+        this.pushPokeLocationMapObj("Route 23 (Victory Road)", 1, 6);
+        this.pushPokeLocationMapObj("Route 23 (Indigo Plateau)", 1, 4 - 1);
+        this.pushPokeLocationMapObj("Route 24", 12, 1);
+        this.pushPokeLocationMapObj("Route 25", 13 + 1, 0 + 1 - .25);
+        this.pushPokeLocationMapObj("Route 3", 5, 3 - 1 - .25);
+        this.pushPokeLocationMapObj("Route 4", 9, 2 - .25);
+        this.pushPokeLocationMapObj("Route 5", 12, 4 - .25);
+        this.pushPokeLocationMapObj("Route 6", 12, 7 - .25);
+        this.pushPokeLocationMapObj("Route 7", 11, 5 - .25);
+        this.pushPokeLocationMapObj("Route 8", 14, 5 + .75);
+        this.pushPokeLocationMapObj("Route 9", 14, 2);
+        // this.pushPokeLocationMapObj("Ruin Valley");// TODO: seven islands
+        this.pushPokeLocationMapObj("Saffron City", 12, 5);
+        this.pushPokeLocationMapObj("Seafoam Islands 1F", 7, 13 - .25);
+        this.pushPokeLocationMapObj("Seafoam Islands B1F", 7, 13 + 0);
+        this.pushPokeLocationMapObj("Seafoam Islands B2F", 7, 13 + .25);
+        this.pushPokeLocationMapObj("Seafoam Islands B3F", 7, 13 + .5);
+        this.pushPokeLocationMapObj("Seafoam Islands B4F", 7, 13 + .75);
         // this.pushPokeLocationMapObj("Sevault Canyon");// TODO: seven islands
         // this.pushPokeLocationMapObj("Seven Island");// TODO: seven islands
-        // this.pushPokeLocationMapObj("Silph Co.");
+        this.pushPokeLocationMapObj("Silph Co.", 12, 5 - .25);
         // this.pushPokeLocationMapObj("Six Island");// TODO: seven islands
         // this.pushPokeLocationMapObj("Tanoby Chambers");// TODO: seven islands
         // this.pushPokeLocationMapObj("Tanoby Ruins");// TODO: seven islands
@@ -186,12 +187,12 @@ export class HomeComponent implements OnInit {
         // this.pushPokeLocationMapObj("Three Isle Port");// TODO: seven islands
         // this.pushPokeLocationMapObj("Treasure Beach");// TODO: seven islands
         // this.pushPokeLocationMapObj("Two Island");// TODO: seven islands
-        // this.pushPokeLocationMapObj("Vermilion City");
-        // this.pushPokeLocationMapObj("Victory Road 1F");
-        // this.pushPokeLocationMapObj("Victory Road 2F");
-        // this.pushPokeLocationMapObj("Victory Road 3F");
-        // this.pushPokeLocationMapObj("Viridian City");
-        // this.pushPokeLocationMapObj("Viridian Forest");
+        this.pushPokeLocationMapObj("Vermilion City", 12, 8);
+        this.pushPokeLocationMapObj("Victory Road 1F", 1, 5);
+        this.pushPokeLocationMapObj("Victory Road 2F", 1, 5 - .25);
+        this.pushPokeLocationMapObj("Victory Road 3F", 1, 5 - .5);
+        this.pushPokeLocationMapObj("Viridian City", 3, 8);
+        this.pushPokeLocationMapObj("Viridian Forest", 3 + 1, 5);
         // this.pushPokeLocationMapObj("Water Labyrinth");// TODO: seven islands
         // this.pushPokeLocationMapObj("Water Path");// TODO: seven islands
     }
