@@ -5,9 +5,11 @@
     "ng": "ng",
     "postinstall": "ngcc",
     "start": "ng serve --progress --open",
-    "build": "ng build -c=production --aot",
+    "build": "npm run test-pokemon-data && ng build -c=production --aot",
     "deploy": "npm run build && firebase deploy --only hosting",
     "test": "ng test",
+    "test-pokemon-data": "npm run build-pokemon-data && node out-test-pokemon-data/test.spec",
+    "build-pokemon-data": "rimraf out-test-pokemon-data && tsc -p tsconfig.test-poke-data.json",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

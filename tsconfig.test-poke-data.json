@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./out-test-pokemon-data",
+    "types": [],
+    "paths": {},// Remove all paths used for angular application
+    "module": "commonjs",// Changing from esnext to commonjs since we are using node.js instead here
+  },
+  "files": [
+  ],
+  "include": [
+    "pokemon_data",
+  ]
+}
