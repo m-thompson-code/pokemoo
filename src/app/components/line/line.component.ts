@@ -44,10 +44,17 @@ export class LineComponent implements OnInit {
 
     private _adjustLine(from: HTMLElement, to: HTMLElement, line: HTMLDivElement): void {
 
-        const fT = from.offsetTop  + from.offsetHeight/2;
-        const tT = to.offsetTop 	 + to.offsetHeight/2;
-        const fL = from.offsetLeft + from.offsetWidth/2;
-        const tL = to.offsetLeft 	 + to.offsetWidth/2;
+        let fT = from.offsetTop  + from.offsetHeight / 2;
+        let tT = to.offsetTop 	 + to.offsetHeight / 2;
+        let fL = from.offsetLeft + from.offsetWidth / 2;
+        let tL = to.offsetLeft 	 + to.offsetWidth / 2;
+
+        // Corrects the position of the line given that I'm centering the objects using transform: translate(-50%, -50%);
+        fT -= from.offsetHeight / 2;
+        tT -= to.offsetHeight / 2;
+        fL -= from.offsetWidth / 2;
+        tL -= to.offsetWidth / 2;
+        // END Correct
         
         const CA   = Math.abs(tT - fT);
         const CO   = Math.abs(tL - fL);

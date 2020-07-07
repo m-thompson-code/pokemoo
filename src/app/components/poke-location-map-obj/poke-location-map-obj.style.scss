@@ -4,6 +4,10 @@
     display: block;
 }
 
-// .div-container {
-    
-// }
+.div-container {
+    border-radius: 50%;
+    min-height: 16px;
+    min-width: 16px;
+    // background: green;
+    white-space: nowrap;
+}

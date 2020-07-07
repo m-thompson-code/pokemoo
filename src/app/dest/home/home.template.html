@@ -1,13 +1,14 @@
 <div class="container">
-    <div class="source-map-wrapper">
+    <!-- <div class="source-map-wrapper">
         <div class="tiles-wrapper">
             <div class="tile-col" *ngFor="let x of tileRow">
                 <div (click)="_consoleTile(x, y)" [class]="'tile tile-' + ((x + y) % 2) + ' ' + (activeX === x && activeY === y ? ' active' : '') " *ngFor="let y of tileCol"></div>
             </div>
         </div>
         <img class="source-map" src="/assets/kanto-world-map.png">
-    </div>
-    <div class="map-wrapper">
+    </div> -->
+    <p>Map <a (click)="toggleMap()">+/-</a></p>
+    <div [class]="'map-wrapper' + (showMap ? ' show' : ' hide')">
         <div class="map">
             <moo-line *ngFor="let line of lines" [pointA]="line.pointA" [pointB]="line.pointB"></moo-line>
 
@@ -20,11 +21,29 @@
     <!-- <div #pointA class="point-a"></div>
     <div #pointB class="point-b"></div>
     <moo-line [pointA]="pointA" [pointB]="pointB"></moo-line> -->
+
+    <p>Location: {{ pokeLocation }}</p>
     
-    <!-- <ng-container *ngIf="!pokeLocationData">
-        <p *ngFor="let pokeLocation of pokeLocations"><a (click)="setPokeLocation(pokeLocation)">{{ pokeLocation }}</a></p>
+    <ng-container *ngIf="!pokeLocationData">
+        <p>Unexpected issue loading pokeLocation data for this location</p>
     </ng-container>
     <ng-container *ngIf="pokeLocationData">
-        <p *ngFor="let pokeLocation of pokeLocationData.connections"><a (click)="setPokeLocation(pokeLocation)">{{ pokeLocation }}</a></p>
-    </ng-container>-->
+        <ng-container *ngFor="let spawnType of filteredSpawnTypes">
+            <p>~ Spawn Type: {{ spawnType }}</p>
+
+            <ng-container *ngIf="filteredSpawnPokemonMap[spawnType]">
+                <ng-container *ngFor="let _locationPokemonData of filteredSpawnPokemonMap[spawnType]">
+                    <ng-container *ngIf="_locationPokemonData">
+                        <p>~ ~ Pokemon: {{ _locationPokemonData.pokemon }} Lv
+                            {{ _locationPokemonData.minLevel }}
+                            {{ _locationPokemonData.minLevel !== _locationPokemonData.maxLevel ? (' - ' + _locationPokemonData.maxLevel) : '' }} ~ Spawn Rate: 
+                            {{ _locationPokemonData.mixRatePercent | percent:'1.0-2' }} ({{ _locationPokemonData.mixRate }} / {{ _locationPokemonData.totalRate }})
+                        </p>
+                        <p *ngIf="_locationPokemonData.note">~ ~ ~ {{ _locationPokemonData.note }}</p>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+            
+        </ng-container>
+    </ng-container>
 </div>

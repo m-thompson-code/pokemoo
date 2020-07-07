@@ -3,7 +3,12 @@ import { Component, OnInit, ViewChildren, QueryList, ChangeDetectorRef, ElementR
 import { pokemonList, Pokemon, pokeLocationDataMap, PokeLocation, PokeLocationData, pokeLocations, LocationPokemonData, SpawnType } from 'pokemon_data';
 import { PokeLocationMapObjComponent } from '@app/components/poke-location-map-obj/poke-location-map-obj.component';
 
-export type _LocationPokemonData = LocationPokemonData & {pokemon: Pokemon};
+export type _LocationPokemonData = LocationPokemonData & {
+    pokemon: Pokemon;
+    mixRate: number;// Combined rate between both versions of the game
+    mixRatePercent: number;// Decimal percent of mixRate
+    totalRate: number;
+};
 
 export interface PokeLocationMapObj {
     pokeLocation: PokeLocation;
@@ -33,7 +38,7 @@ export class HomeComponent implements OnInit {
     @ViewChildren('pokeLocationObjs') private pokeLocationObjsViewChildren!: QueryList<PokeLocationMapObjComponent>;
 
     public pokemonList: Pokemon[] = [];
-    public pokemonLocation?: PokeLocation;
+    public pokeLocation?: PokeLocation;
     public pokeLocationData?: PokeLocationData;
 
     public pokeLocations: PokeLocation[] = [];
@@ -53,6 +58,8 @@ export class HomeComponent implements OnInit {
     public activeY: number = 0;
 
     public lines: MapLine[] = [];
+
+    public showMap?: boolean;
 
     constructor(private cdRef: ChangeDetectorRef) {
         this.JSON = JSON;
@@ -79,7 +86,7 @@ export class HomeComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.setTiles(15,18);
+        this.setTiles(15,17);
 
         this.JSON = JSON;
 
@@ -88,7 +95,7 @@ export class HomeComponent implements OnInit {
 
         this.pokeLocationMapObjs = [];
 
-        const leftMultiplier = 100/18;
+        const leftMultiplier = 100/17;
         const _lm = leftMultiplier;
         const topMultipler = 100/15;
         const _tm = topMultipler;
@@ -118,7 +125,7 @@ export class HomeComponent implements OnInit {
         // this.pushPokeLocationMapObj("Kindle Road");// TODO: seven islands
         this.pushPokeLocationMapObj("Lavender Town", 16, 5 + .5);
         // this.pushPokeLocationMapObj("Lost Cave");
-        this.pushPokeLocationMapObj("Power Plant", 16, 3);
+        this.pushPokeLocationMapObj("Power Plant", 16 -.5, 3);
         // this.pushPokeLocationMapObj("Memorial Pillar");// TODO: seven islands
         // this.pushPokeLocationMapObj("Mt. Ember");// TODO: handle this
         this.pushPokeLocationMapObj("Mt. Moon 1F", 7, 2);
@@ -134,12 +141,12 @@ export class HomeComponent implements OnInit {
         this.pushPokeLocationMapObj("Pokemon Mansion 3F", 3 - 2, 13 - .5);
         this.pushPokeLocationMapObj("Pokemon Mansion B1F", 3 - 2, 13 + .25);
         this.pushPokeLocationMapObj("Pokemon Tower 1F", 16, 5 + .25);
-        this.pushPokeLocationMapObj("Pokemon Tower 2F", 16, 5 + 0);
-        this.pushPokeLocationMapObj("Pokemon Tower 3F", 16, 5 - .25);
-        this.pushPokeLocationMapObj("Pokemon Tower 4F", 16, 5 - .5);
-        this.pushPokeLocationMapObj("Pokemon Tower 5F", 16, 5 - .75);
-        this.pushPokeLocationMapObj("Pokemon Tower 6F", 16, 5 - 1);
-        this.pushPokeLocationMapObj("Pokemon Tower 7F", 16, 5 - 1.25);
+        // this.pushPokeLocationMapObj("Pokemon Tower 2F", 16 + .5, 5 + 0);
+        // this.pushPokeLocationMapObj("Pokemon Tower 3F", 16 + .5, 5 - .25);
+        // this.pushPokeLocationMapObj("Pokemon Tower 4F", 16 + .5, 5 - .5);
+        // this.pushPokeLocationMapObj("Pokemon Tower 5F", 16 + .5, 5 - .75);
+        // this.pushPokeLocationMapObj("Pokemon Tower 6F", 16 + .5, 5 - 1);
+        // this.pushPokeLocationMapObj("Pokemon Tower 7F", 16 + .5, 5 - 1.25);
         // this.pushPokeLocationMapObj("Resort Gorgeous");// TODO: seven islands
         this.pushPokeLocationMapObj("Rock Tunnel 1F", 16 - 2.5, 4);
         this.pushPokeLocationMapObj("Rock Tunnel B1F", 16 - 2.5, 4 + .25);
@@ -195,6 +202,12 @@ export class HomeComponent implements OnInit {
         this.pushPokeLocationMapObj("Viridian Forest", 3 + 1, 5);
         // this.pushPokeLocationMapObj("Water Labyrinth");// TODO: seven islands
         // this.pushPokeLocationMapObj("Water Path");// TODO: seven islands
+
+        // if (!this.showMap) {
+        //     this.toggleMap();
+        // }
+
+        this.setPokeLocation("Pallet Town");
     }
 
     public ngAfterViewInit(): void {
@@ -225,10 +238,6 @@ export class HomeComponent implements OnInit {
                             this.lines.push({
                                 pointA: pointA,
                                 pointB: pointB,
-                                // pointA: __a.divContainer.nativeElement.parentElement,
-                                // pointB: __b.divContainer.nativeElement.parentElement,
-                                // pointA: (__a as any).nativeElement as HTMLElement,
-                                // pointB: (__b as any).nativeElement as HTMLElement,
                             });
                         }
                     }
@@ -240,7 +249,7 @@ export class HomeComponent implements OnInit {
     }
 
     private pushPokeLocationMapObj(pokeLocation: PokeLocation, left: number, top: number): PokeLocationMapObj {
-        const leftMultiplier = 100/18;
+        const leftMultiplier = 100/17;
         const _lm = leftMultiplier;
         const topMultipler = 100/15;
         const _tm = topMultipler;
@@ -259,15 +268,20 @@ export class HomeComponent implements OnInit {
         return _p;
     }
 
-    public setPokeLocation(pokemonLocation: PokeLocation): void {
-        this.pokemonLocation = pokemonLocation;
-        this.pokeLocationData = pokeLocationDataMap[pokemonLocation];
+    public setPokeLocation(pokeLocation: PokeLocation): void {
+        this.pokeLocation = pokeLocation;
+        this.pokeLocationData = pokeLocationDataMap[pokeLocation];
         this.filteredSpawnTypes = [];
         this.filteredSpawnPokemonMap = {};
 
         for (let spawnType of keys(this.pokeLocationData.catchMap)) {
+            let totalRate = 0;
+
+            const filteredSpawnPokemons: _LocationPokemonData[] = [];
+
+            this.filteredSpawnPokemonMap[spawnType] = filteredSpawnPokemons;
+
             this.filteredSpawnTypes.push(spawnType);
-            this.filteredSpawnPokemonMap[spawnType] = [];
 
             const _locationPokemonDataMap = this.pokeLocationData.catchMap[spawnType];
 
@@ -278,18 +292,56 @@ export class HomeComponent implements OnInit {
 
             for (let pokemon of keys(_locationPokemonDataMap)) {
                 const _p = _locationPokemonDataMap[pokemon];
+
                 if (!_p) {
                     continue;
                 }
 
-                const _locationPokemonData: LocationPokemonData & {pokemon?: Pokemon} = _p;
-                _locationPokemonData.pokemon = pokemon;
+                // Avoid mutating the source for LocationPokemonData (and we're going to be adding additional attributes)
+                const _locationPokemonData: _LocationPokemonData = {
+                    rate: _p.rate,
+                    minLevel: _p.minLevel,
+                    maxLevel: _p.maxLevel,
+                    note: _p.note,
+                    inFireRed: _p.inFireRed,
+                    inLeafGreen: _p.inLeafGreen,
+                    pokemon: pokemon,
+                    mixRate: 0,
+                    mixRatePercent: 0,
+                    totalRate: 0,
+                };
 
-                if (_locationPokemonData.pokemon) {
-                    this.filteredSpawnPokemonMap[spawnType]?.push(_locationPokemonData as _LocationPokemonData);
+                if (_locationPokemonData.inFireRed) {
+                    // totalRate += _locationPokemonData.rate;
+                    _locationPokemonData.mixRate += _locationPokemonData.rate;
                 }
+                if (_locationPokemonData.inLeafGreen) {
+                    // totalRate += _locationPokemonData.rate;
+                    _locationPokemonData.mixRate += _locationPokemonData.rate;
+                }
+
+                totalRate += _locationPokemonData.mixRate;
+
+                // const _locationPokemonData: LocationPokemonData & {pokemon?: Pokemon} = _p;
+                // _locationPokemonData.pokemon = pokemon;
+
+                filteredSpawnPokemons.push(_locationPokemonData);
+            }
+
+            if (!totalRate) {
+                console.warn("Unexpected totalRate was 0");
+                debugger;
+            }
+
+            for (const _locationPokemonData of filteredSpawnPokemons) {
+                _locationPokemonData.mixRatePercent = _locationPokemonData.mixRate / totalRate;
+                _locationPokemonData.totalRate = totalRate;
             }
         }
+    }
+
+    public toggleMap(): void {
+        this.showMap = !this.showMap;
     }
 
     public ngOnDestroy(): void {
