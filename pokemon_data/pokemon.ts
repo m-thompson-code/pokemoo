@@ -1421,3 +1421,17 @@ export const pokemonNames: PokemonName[] = [
     "Mewtwo",
     "Mew",
 ];
+
+// We are going to cast it since we will be validating that there is everything pokemonName as its attributes dynamically
+const _pokemonDataMap: {
+    [pokemonName in PokemonName]: PokemonData;
+} = {} as {
+    [pokemonName in PokemonName]: PokemonData;
+};
+
+// Assuming every pokemon is in the pokemonDatas (Validation of this being true is done in test.sepc.ts for pokemon_data)
+for (const pokemonData of pokemonDatas) {
+    _pokemonDataMap[pokemonData.pokemonName] = pokemonData;
+}
+
+export const pokemonDataMap = _pokemonDataMap;
