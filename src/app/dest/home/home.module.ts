@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { LineModule } from '@app/components/line';
 import { PokeLocationMapObjModule } from '@app/components/poke-location-map-obj';
+import { PipeModule } from '@app/pipes';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,8 @@ import { PokeLocationMapObjModule } from '@app/components/poke-location-map-obj'
 
         LineModule,
         PokeLocationMapObjModule,
+
+        PipeModule,
     ]
 })
 export class HomeModule { }

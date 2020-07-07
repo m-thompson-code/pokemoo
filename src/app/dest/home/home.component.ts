@@ -47,6 +47,11 @@ export class HomeComponent implements OnInit {
         [spawnType in SpawnType]?: _LocationPokemonData[];
     } = {};
 
+    public filteredSpawnPokemonArrays: {
+        spawnType: SpawnType;
+        locationPokemonDatas: _LocationPokemonData[];
+    }[] = [];
+
     public JSON: JSON;
 
     public pokeLocationMapObjs: PokeLocationMapObj[] = [];
@@ -269,10 +274,11 @@ export class HomeComponent implements OnInit {
     }
 
     public setPokeLocation(pokeLocation: PokeLocation): void {
-        this.pokeLocation = pokeLocation;
         this.pokeLocationData = pokeLocationDataMap[pokeLocation];
+
         this.filteredSpawnTypes = [];
         this.filteredSpawnPokemonMap = {};
+        this.filteredSpawnPokemonArrays = [];
 
         for (let spawnType of keys(this.pokeLocationData.catchMap)) {
             let totalRate = 0;
@@ -282,6 +288,11 @@ export class HomeComponent implements OnInit {
             this.filteredSpawnPokemonMap[spawnType] = filteredSpawnPokemons;
 
             this.filteredSpawnTypes.push(spawnType);
+
+            this.filteredSpawnPokemonArrays.push({
+                spawnType: spawnType,
+                locationPokemonDatas: filteredSpawnPokemons,
+            });
 
             const _locationPokemonDataMap = this.pokeLocationData.catchMap[spawnType];
 
@@ -338,6 +349,8 @@ export class HomeComponent implements OnInit {
                 _locationPokemonData.totalRate = totalRate;
             }
         }
+
+        this.pokeLocation = pokeLocation;
     }
 
     public toggleMap(): void {

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { PipeModule } from '@app/pipes';
+
 import * as firebase from 'firebase/app';
 
 import 'firebase/analytics';
@@ -39,7 +41,8 @@ firebase.analytics();
     imports: [
         BrowserModule,
         AppRoutingModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        PipeModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
