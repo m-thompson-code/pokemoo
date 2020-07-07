@@ -38,6 +38,18 @@ const validatePokeLocationDataMap: (pokeLocationDataMap: PokeLocationDataMap) =>
             continue;
         }
 
+        for (const spawnType of keys(pokeLocationData.catchMap)) {// [POKETEST1]
+            const _spawnTypePokeLocationData = pokeLocationData.catchMap[spawnType];
+
+            if (!keys(_spawnTypePokeLocationData).length) {
+                errors.push({
+                    message: "Unexpected no pokemon in SpawnType for PokeLocationData",
+                    pokeLocation: pokeLocation,
+                    spawnType: spawnType,
+                });
+            }
+        }
+
         for (const connection of pokeLocationData.connections) {
             if (connection === pokeLocation) {
                 errors.push({
