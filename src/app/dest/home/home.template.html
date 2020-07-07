@@ -34,7 +34,7 @@
             <ng-container *ngIf="filteredSpawnPokemonData.locationPokemonDatas as _locationPokemonDatas">
                 <ng-container *ngFor="let _locationPokemonData of _locationPokemonDatas">
                     <ng-container *ngIf="_locationPokemonData">
-                        <p>~ ~ Pokemon: {{ _locationPokemonData.pokemon }} Lv
+                        <p>~ ~ Pokemon: {{ _locationPokemonData.pokemonName }} Lv
                             {{ _locationPokemonData.minLevel }}
                             {{ _locationPokemonData.minLevel !== _locationPokemonData.maxLevel ? (' - ' + _locationPokemonData.maxLevel) : '' }} ~ Spawn Rate: 
                             {{ _locationPokemonData.mixRatePercent | percent:'1.0-2' }} ({{ _locationPokemonData.mixRate }} / {{ _locationPokemonData.totalRate }})

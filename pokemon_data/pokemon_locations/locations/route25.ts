@@ -145,6 +145,16 @@ export const route25: PokeLocationData = {
                 rate: 15,
             },
         },
+        "Special": {// Sources say Charmander may be in Route 24 instead, but the way the game will work, this is better since it would be easy to get two charmanders if it was on 24
+            Charmander: {
+                inFireRed: false,
+                inLeafGreen: false,
+                minLevel: 10,
+                maxLevel: 10,
+                rate: 100,
+                note: "Gift Pokemon. Limit one per visiting location",
+            },
+        }
     },
     connections: [
         "Route 24",

@@ -1,4 +1,4 @@
-import { Pokemon } from './pokemon';
+import { PokemonName } from './pokemon';
 
 import * as pokeLocationDatas from './pokemon_locations/locations';
 
@@ -22,7 +22,7 @@ export interface LocationPokemonData {
 export interface PokeLocationData {
     catchMap: {
         [spawnType in SpawnType]?: {
-            [pokemon in Pokemon]?: LocationPokemonData;
+            [pokemonName in PokemonName]?: LocationPokemonData;
         }
     };
     connections: PokeLocation[];

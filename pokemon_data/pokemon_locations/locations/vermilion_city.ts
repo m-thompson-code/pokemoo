@@ -9,7 +9,15 @@ export const vermilionCity: PokeLocationData = {
                 minLevel: 5,
                 maxLevel: 35,
                 rate: 100,
-                note: "You're supposed to trade for this pokemon, but to make it simple, it's a gift"
+                note: "Gift Pokemon. Limit one per visiting location",
+            },
+            Squirtle: {
+                inFireRed: false,
+                inLeafGreen: false,
+                minLevel: 10,
+                maxLevel: 10,
+                rate: 100,
+                note: "Gift Pokemon. Limit one per visiting location",
             }
         },
         Surfing: {
@@ -103,7 +111,7 @@ export const vermilionCity: PokeLocationData = {
                 maxLevel: 25,
                 rate: 15,
             },
-        }
+        },
     },
     connections: [
         "One Island",

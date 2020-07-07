@@ -58,6 +58,16 @@ export const celadonCity: PokeLocationData = {
                 maxLevel: 40,
                 rate: 1,
             },
+        },
+        "Special": {
+            Bulbasaur: {
+                inFireRed: false,
+                inLeafGreen: false,
+                minLevel: 10,
+                maxLevel: 10,
+                rate: 100,
+                note: "Gift Pokemon. Limit one per visiting location",
+            },
         }
     },
     connections: [

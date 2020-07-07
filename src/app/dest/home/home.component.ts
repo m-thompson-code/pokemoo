@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChildren, QueryList, ChangeDetectorRef, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 
-import { pokemonList, Pokemon, pokeLocationDataMap, PokeLocation, PokeLocationData, pokeLocations, LocationPokemonData, SpawnType } from 'pokemon_data';
+import { PokemonName, pokeLocationDataMap, PokeLocation, PokeLocationData, pokeLocations, LocationPokemonData, SpawnType } from 'pokemon_data';
 import { PokeLocationMapObjComponent } from '@app/components/poke-location-map-obj/poke-location-map-obj.component';
 
 export type _LocationPokemonData = LocationPokemonData & {
-    pokemon: Pokemon;
+    pokemonName: PokemonName;
     mixRate: number;// Combined rate between both versions of the game
     mixRatePercent: number;// Decimal percent of mixRate
     totalRate: number;
@@ -37,7 +37,6 @@ export function keys<O>(o: O): (keyof O)[] {
 export class HomeComponent implements OnInit {
     @ViewChildren('pokeLocationObjs') private pokeLocationObjsViewChildren!: QueryList<PokeLocationMapObjComponent>;
 
-    public pokemonList: Pokemon[] = [];
     public pokeLocation?: PokeLocation;
     public pokeLocationData?: PokeLocationData;
 
@@ -52,8 +51,6 @@ export class HomeComponent implements OnInit {
         locationPokemonDatas: _LocationPokemonData[];
     }[] = [];
 
-    public JSON: JSON;
-
     public pokeLocationMapObjs: PokeLocationMapObj[] = [];
 
     public tileCol: number[] = [];
@@ -67,7 +64,6 @@ export class HomeComponent implements OnInit {
     public showMap?: boolean;
 
     constructor(private cdRef: ChangeDetectorRef) {
-        this.JSON = JSON;
     }
 
     private setTiles(cols: number, rows: number): void {
@@ -93,17 +89,9 @@ export class HomeComponent implements OnInit {
     public ngOnInit(): void {
         this.setTiles(15,17);
 
-        this.JSON = JSON;
-
-        this.pokemonList = pokemonList;
         this.pokeLocations = pokeLocations;
 
         this.pokeLocationMapObjs = [];
-
-        const leftMultiplier = 100/17;
-        const _lm = leftMultiplier;
-        const topMultipler = 100/15;
-        const _tm = topMultipler;
 
         // this.pushPokeLocationMapObj("Altering Cave", `${_tm * 8}%`, `${_lm * 8}%`);// TODO: seven islands
         // this.pushPokeLocationMapObj("Berry Forest");// TODO: seven islands
@@ -301,8 +289,8 @@ export class HomeComponent implements OnInit {
                 return;
             }
 
-            for (let pokemon of keys(_locationPokemonDataMap)) {
-                const _p = _locationPokemonDataMap[pokemon];
+            for (let pokemonName of keys(_locationPokemonDataMap)) {
+                const _p = _locationPokemonDataMap[pokemonName];
 
                 if (!_p) {
                     continue;
@@ -316,7 +304,7 @@ export class HomeComponent implements OnInit {
                     note: _p.note,
                     inFireRed: _p.inFireRed,
                     inLeafGreen: _p.inLeafGreen,
-                    pokemon: pokemon,
+                    pokemonName: pokemonName,
                     mixRate: 0,
                     mixRatePercent: 0,
                     totalRate: 0,

@@ -7,7 +7,7 @@ import * as cookieParser from 'cookie-parser';
 
 import { adminInit } from './admin-init';
 
-import { pokemonList, Pokemon } from '../../pokemon_data';
+// import { pokemonList, Pokemon } from '../../pokemon_data';
 
 // Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript
@@ -44,10 +44,11 @@ app.get('/ping', async (req: express.Request, res: express.Response) => {
 app.get('/pokemon', async (req: express.Request, res: express.Response) => {
     const message = "app - ping";
     console.log(message);
-    const _pokemonList: Pokemon[] = pokemonList;
+    // const _pokemonList: Pokemon[] = pokemonList;
 
     return res.status(200).type('json').send({
-        pokemonList: _pokemonList,
+        // pokemonList: _pokemonList,
+        message: "pokemonnnnn"
     });
 });
 

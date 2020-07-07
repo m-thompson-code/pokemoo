@@ -1,6 +1,574 @@
-export type Pokemon = "Bulbasaur" | "Ivysaur" | "Venusaur" | "Charmander" | "Charmeleon" | "Charizard" | "Squirtle" | "Wartortle" | "Blastoise" | "Caterpie" | "Metapod" | "Butterfree" | "Weedle" | "Kakuna" | "Beedrill" | "Pidgey" | "Pidgeotto" | "Pidgeot" | "Rattata" | "Raticate" | "Spearow" | "Fearow" | "Ekans" | "Arbok" | "Pikachu" | "Raichu" | "Sandshrew" | "Sandslash" | "Nidoran [Female]" | "Nidorina" | "Nidoqueen" | "Nidoran [Male]" | "Nidorino" | "Nidoking" | "Clefairy" | "Clefable" | "Vulpix" | "Ninetales" | "Jigglypuff" | "Wigglytuff" | "Zubat" | "Golbat" | "Oddish" | "Gloom" | "Vileplume" | "Paras" | "Parasect" | "Venonat" | "Venomoth" | "Diglett" | "Dugtrio" | "Meowth" | "Persian" | "Psyduck" | "Golduck" | "Mankey" | "Primeape" | "Growlithe" | "Arcanine" | "Poliwag" | "Poliwhirl" | "Poliwrath" | "Abra" | "Kadabra" | "Alakazam" | "Machop" | "Machoke" | "Machamp" | "Bellsprout" | "Weepinbell" | "Victreebel" | "Tentacool" | "Tentacruel" | "Geodude" | "Graveler" | "Golem" | "Ponyta" | "Rapidash" | "Slowpoke" | "Slowbro" | "Magnemite" | "Magneton" | "Farfetch'd" | "Doduo" | "Dodrio" | "Seel" | "Dewgong" | "Grimer" | "Muk" | "Shellder" | "Cloyster" | "Gastly" | "Haunter" | "Gengar" | "Onix" | "Drowzee" | "Hypno" | "Krabby" | "Kingler" | "Voltorb" | "Electrode" | "Exeggcute" | "Exeggutor" | "Cubone" | "Marowak" | "Hitmonlee" | "Hitmonchan" | "Lickitung" | "Koffing" | "Weezing" | "Rhyhorn" | "Rhydon" | "Chansey" | "Tangela" | "Kangaskhan" | "Horsea" | "Seadra" | "Goldeen" | "Seaking" | "Staryu" | "Starmie" | "Mr. Mime" | "Scyther" | "Jynx" | "Electabuzz" | "Magmar" | "Pinsir" | "Tauros" | "Magikarp" | "Gyarados" | "Lapras" | "Ditto" | "Eevee" | "Vaporeon" | "Jolteon" | "Flareon" | "Porygon" | "Omanyte" | "Omastar" | "Kabuto" | "Kabutops" | "Aerodactyl" | "Snorlax" | "Articuno" | "Zapdos" | "Moltres" | "Dratini" | "Dragonair" | "Dragonite" | "Mewtwo" | "Mew"
+export type PokemonName = "Bulbasaur" | "Ivysaur" | "Venusaur" | "Charmander" | "Charmeleon" | "Charizard" | "Squirtle" | "Wartortle" | "Blastoise" | "Caterpie" | "Metapod" | "Butterfree" | "Weedle" | "Kakuna" | "Beedrill" | "Pidgey" | "Pidgeotto" | "Pidgeot" | "Rattata" | "Raticate" | "Spearow" | "Fearow" | "Ekans" | "Arbok" | "Pikachu" | "Raichu" | "Sandshrew" | "Sandslash" | "Nidoran [Female]" | "Nidorina" | "Nidoqueen" | "Nidoran [Male]" | "Nidorino" | "Nidoking" | "Clefairy" | "Clefable" | "Vulpix" | "Ninetales" | "Jigglypuff" | "Wigglytuff" | "Zubat" | "Golbat" | "Oddish" | "Gloom" | "Vileplume" | "Paras" | "Parasect" | "Venonat" | "Venomoth" | "Diglett" | "Dugtrio" | "Meowth" | "Persian" | "Psyduck" | "Golduck" | "Mankey" | "Primeape" | "Growlithe" | "Arcanine" | "Poliwag" | "Poliwhirl" | "Poliwrath" | "Abra" | "Kadabra" | "Alakazam" | "Machop" | "Machoke" | "Machamp" | "Bellsprout" | "Weepinbell" | "Victreebel" | "Tentacool" | "Tentacruel" | "Geodude" | "Graveler" | "Golem" | "Ponyta" | "Rapidash" | "Slowpoke" | "Slowbro" | "Magnemite" | "Magneton" | "Farfetch'd" | "Doduo" | "Dodrio" | "Seel" | "Dewgong" | "Grimer" | "Muk" | "Shellder" | "Cloyster" | "Gastly" | "Haunter" | "Gengar" | "Onix" | "Drowzee" | "Hypno" | "Krabby" | "Kingler" | "Voltorb" | "Electrode" | "Exeggcute" | "Exeggutor" | "Cubone" | "Marowak" | "Hitmonlee" | "Hitmonchan" | "Lickitung" | "Koffing" | "Weezing" | "Rhyhorn" | "Rhydon" | "Chansey" | "Tangela" | "Kangaskhan" | "Horsea" | "Seadra" | "Goldeen" | "Seaking" | "Staryu" | "Starmie" | "Mr. Mime" | "Scyther" | "Jynx" | "Electabuzz" | "Magmar" | "Pinsir" | "Tauros" | "Magikarp" | "Gyarados" | "Lapras" | "Ditto" | "Eevee" | "Vaporeon" | "Jolteon" | "Flareon" | "Porygon" | "Omanyte" | "Omastar" | "Kabuto" | "Kabutops" | "Aerodactyl" | "Snorlax" | "Articuno" | "Zapdos" | "Moltres" | "Dratini" | "Dragonair" | "Dragonite" | "Mewtwo" | "Mew"
 
-export const pokemonList: Pokemon[] = [
+export type EvolutionStone = 'Leaf Stone' | 'Thunder Stone' | 'Fire Stone' | 'Water Stone' | 'Moon Stone';
+
+export type SpecialEvolution = 'Trade Back Disc';
+
+export type ExpGrowthText = 'Medium Slow' | 'Medium Fast' | 'Fast';
+export type ExpGrowth = 1059860 | 1000000 | 800000;
+
+export interface MediumSlowExpGrowth {
+    expGrowth: 1059860;
+    expGrowthText: 'Medium Slow';
+}
+
+export interface MediumFastExpGrowth {
+    expGrowth: 1000000;
+    expGrowthText: 'Medium Fast';
+}
+
+export interface FastExpGrowth {
+    expGrowth: 800000;
+    expGrowthText: 'Fast';
+}
+
+export interface CanEvolve {
+    evolutionMethod: number | EvolutionStone | SpecialEvolution;
+    evolution: PokemonName;
+    evolutionMethods?: never;
+    evolutions?: never;
+}
+
+export interface CannotEvolve {
+    evolutionMethod?: never;
+    evolution?: never;
+    evolutionMethods?: never;
+    evolutions?: never;
+}
+
+// Order matters for evolutionMethods/evolutions
+export interface HasEvolutions {
+    evolutionMethod?: never;
+    evolution?: never;
+    evolutionMethods: (number | EvolutionStone | SpecialEvolution)[];
+    evolutions: PokemonName[];
+}
+
+export interface _PokemonData {
+    pokemonName: PokemonName;
+    expGrowth: ExpGrowth;
+    expGrowthText: ExpGrowthText;
+    evolutionMethod?: number | EvolutionStone | SpecialEvolution;
+    evolution?: PokemonName;
+    evolutionMethods?: (number | EvolutionStone | SpecialEvolution)[];
+    evolutions?: PokemonName[];
+    pokedexEntry: number;
+    captureRate: number;
+}
+
+export type PokemonData = _PokemonData & (MediumSlowExpGrowth | MediumFastExpGrowth | FastExpGrowth) & (CanEvolve | CannotEvolve | HasEvolutions);
+
+export const pokemonDatas: PokemonData[] = [
+    {
+        pokemonName: "Bulbasaur",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 16,
+        evolution: "Ivysaur",
+        pokedexEntry: 1,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Ivysaur",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 32,
+        evolution: "Venusaur",
+        pokedexEntry: 2,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Venusaur",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: undefined,
+        evolution: undefined,
+        pokedexEntry: 3,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Charmander",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 16,
+        evolution: "Charmeleon",
+        pokedexEntry: 4,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Charmeleon",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 36,
+        evolution: "Charizard",
+        pokedexEntry: 5,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Charizard",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        pokedexEntry: 6,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Squirtle",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 16,
+        evolution: "Wartortle",
+        pokedexEntry: 7,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Wartortle",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 36,
+        evolution: "Blastoise",
+        pokedexEntry: 8,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Blastoise",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        pokedexEntry: 9,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Caterpie",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 7,
+        evolution: "Metapod",
+        pokedexEntry: 10,
+        captureRate: 255,
+    },
+    {
+        pokemonName: "Metapod",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 10,
+        evolution: "Butterfree",
+        pokedexEntry: 11,
+        captureRate: 120,
+    },
+    {
+        pokemonName: "Butterfree",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 12,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Weedle",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 7,
+        evolution: "Kakuna",
+        pokedexEntry: 13,
+        captureRate: 255,
+    },
+    {
+        pokemonName: "Kakuna",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 10,
+        evolution: "Beedrill",
+        pokedexEntry: 14,
+        captureRate: 120,
+    },
+    {
+        pokemonName: "Beedrill",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 15,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Pidgey",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 18,
+        evolution: "Pidgeotto",
+        pokedexEntry: 16,
+        captureRate: 255,
+    },
+    {
+        pokemonName: "Pidgeotto",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 10,
+        evolution: "Pidgeot",
+        pokedexEntry: 17,
+        captureRate: 120,
+    },
+    {
+        pokemonName: "Pidgeot",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        pokedexEntry: 18,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Rattata",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 20,
+        evolution: "Raticate",
+        pokedexEntry: 19,
+        captureRate: 255,
+    },
+    {
+        pokemonName: "Raticate",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 20,
+        captureRate: 127,
+    },
+    {
+        pokemonName: "Spearow",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 20,
+        evolution: "Fearow",
+        pokedexEntry: 21,
+        captureRate: 255,
+    },
+    {
+        pokemonName: "Fearow",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 22,
+        captureRate: 90,
+    },
+    {
+        pokemonName: "Ekans",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 22,
+        evolution: "Arbok",
+        pokedexEntry: 23,
+        captureRate: 255,
+    },
+    {
+        pokemonName: "Arbok",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 24,
+        captureRate: 90,
+    },
+    {
+        pokemonName: "Pikachu",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 'Thunder Stone',
+        evolution: "Raichu",
+        pokedexEntry: 25,
+        captureRate: 190,
+    },
+    {
+        pokemonName: "Raichu",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 26,
+        captureRate: 75,
+    },
+    {
+        pokemonName: "Sandshrew",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 22,
+        evolution: "Sandslash",
+        pokedexEntry: 27,
+        captureRate: 255,
+    },
+    {
+        pokemonName: "Sandslash",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 28,
+        captureRate: 90,
+    },
+    {
+        pokemonName: "Nidoran [Female]",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 16,
+        evolution: "Nidorina",
+        pokedexEntry: 29,
+        captureRate: 235,
+    },
+    {
+        pokemonName: "Nidorina",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 'Moon Stone',
+        evolution: "Nidoqueen",
+        pokedexEntry: 30,
+        captureRate: 120,
+    },
+    {
+        pokemonName: "Nidoqueen",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        pokedexEntry: 31,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Nidoran [Male]",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 16,
+        evolution: "Nidorino",
+        pokedexEntry: 32,
+        captureRate: 235,
+    },
+    {
+        pokemonName: "Nidorino",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 'Moon Stone',
+        evolution: "Nidoking",
+        pokedexEntry: 33,
+        captureRate: 120,
+    },
+    {
+        pokemonName: "Nidoking",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        pokedexEntry: 34,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Clefairy",
+        expGrowth: 800000,
+        expGrowthText: 'Fast',
+        evolutionMethod: 'Moon Stone',
+        evolution: "Clefable",
+        pokedexEntry: 35,
+        captureRate: 150,
+    },
+    {
+        pokemonName: "Clefable",
+        expGrowth: 800000,
+        expGrowthText: 'Fast',
+        pokedexEntry: 36,
+        captureRate: 25,
+    },
+    {
+        pokemonName: "Vulpix",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 'Fire Stone',
+        evolution: "Ninetales",
+        pokedexEntry: 37,
+        captureRate: 190,
+    },
+    {
+        pokemonName: "Ninetales",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 38,
+        captureRate: 75,
+    },
+    {
+        pokemonName: "Jigglypuff",
+        expGrowth: 800000,
+        expGrowthText: 'Fast',
+        evolutionMethod: 'Moon Stone',
+        evolution: "Wigglytuff",
+        pokedexEntry: 39,
+        captureRate: 170,
+    },
+    {
+        pokemonName: "Wigglytuff",
+        expGrowth: 800000,
+        expGrowthText: 'Fast',
+        pokedexEntry: 40,
+        captureRate: 50,
+    },
+    {
+        pokemonName: "Zubat",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 22,
+        evolution: "Golbat",
+        pokedexEntry: 41,
+        captureRate: 255,
+    },
+    {
+        pokemonName: "Golbat",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 42,
+        captureRate: 90,
+    },
+    {
+        pokemonName: "Oddish",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 21,
+        evolution: "Gloom",
+        pokedexEntry: 43,
+        captureRate: 255,
+    },
+    {
+        pokemonName: "Gloom",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',
+        evolutionMethod: 'Leaf Stone',
+        evolution: "Vileplume",
+        pokedexEntry: 44,
+        captureRate: 120,
+    },
+    {
+        pokemonName: "Vileplume",
+        expGrowth: 1059860,
+        expGrowthText: 'Medium Slow',=
+        pokedexEntry: 45,
+        captureRate: 45,
+    },
+    {
+        pokemonName: "Paras",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 24,
+        evolution: "Parasect",
+        pokedexEntry: 46,
+        captureRate: 190,
+    },
+    {
+        pokemonName: "Parasect",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: undefined,
+        pokedexEntry: 47,
+        captureRate: 75,
+    },
+    {
+        pokemonName: "Venonat",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        evolutionMethod: 31,
+        evolution: "Venomoth",
+        pokedexEntry: 48,
+        captureRate: 190,
+    },
+    {
+        pokemonName: "Venomoth",
+        expGrowth: 1000000,
+        expGrowthText: 'Medium Fast',
+        pokedexEntry: 49,
+        captureRate: 75,
+    },
+    // "Diglett",
+    // "Dugtrio",
+    // "Meowth",
+    // "Persian",
+    // "Psyduck",
+    // "Golduck",
+    // "Mankey",
+    // "Primeape",
+    // "Growlithe",
+    // "Arcanine",
+    // "Poliwag",
+    // "Poliwhirl",
+    // "Poliwrath",
+    // "Abra",
+    // "Kadabra",
+    // "Alakazam",
+    // "Machop",
+    // "Machoke",
+    // "Machamp",
+    // "Bellsprout",
+    // "Weepinbell",
+    // "Victreebel",
+    // "Tentacool",
+    // "Tentacruel",
+    // "Geodude",
+    // "Graveler",
+    // "Golem",
+    // "Ponyta",
+    // "Rapidash",
+    // "Slowpoke",
+    // "Slowbro",
+    // "Magnemite",
+    // "Magneton",
+    // "Farfetch'd",
+    // "Doduo",
+    // "Dodrio",
+    // "Seel",
+    // "Dewgong",
+    // "Grimer",
+    // "Muk",
+    // "Shellder",
+    // "Cloyster",
+    // "Gastly",
+    // "Haunter",
+    // "Gengar",
+    // "Onix",
+    // "Drowzee",
+    // "Hypno",
+    // "Krabby",
+    // "Kingler",
+    // "Voltorb",
+    // "Electrode",
+    // "Exeggcute",
+    // "Exeggutor",
+    // "Cubone",
+    // "Marowak",
+    // "Hitmonlee",
+    // "Hitmonchan",
+    // "Lickitung",
+    // "Koffing",
+    // "Weezing",
+    // "Rhyhorn",
+    // "Rhydon",
+    // "Chansey",
+    // "Tangela",
+    // "Kangaskhan",
+    // "Horsea",
+    // "Seadra",
+    // "Goldeen",
+    // "Seaking",
+    // "Staryu",
+    // "Starmie",
+    // "Mr. Mime",
+    // "Scyther",
+    // "Jynx",
+    // "Electabuzz",
+    // "Magmar",
+    // "Pinsir",
+    // "Tauros",
+    // "Magikarp",
+    // "Gyarados",
+    // "Lapras",
+    // "Ditto",
+    // "Eevee",
+    // "Vaporeon",
+    // "Jolteon",
+    // "Flareon",
+    // "Porygon",
+    // "Omanyte",
+    // "Omastar",
+    // "Kabuto",
+    // "Kabutops",
+    // "Aerodactyl",
+    // "Snorlax",
+    // "Articuno",
+    // "Zapdos",
+    // "Moltres",
+    // "Dratini",
+    // "Dragonair",
+    // "Dragonite",
+    // "Mewtwo",
+    // "Mew",
+];
+
+
+export const pokemonNames: PokemonName[] = [
     "Bulbasaur",
     "Ivysaur",
     "Venusaur",
