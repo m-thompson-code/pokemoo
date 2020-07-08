@@ -19,13 +19,18 @@ export interface LocationPokemonData {
     inLeafGreen: boolean;
 }
 
-export interface PokeLocationData {
+// Used for "PokeLocationData" that are imported to be used in parts (example is Route 2 -> Route 2 (Viridian) / Route 2 (Pewter))
+export interface _PokeLocationData {
     catchMap: {
         [spawnType in SpawnType]?: {
             [pokemonName in PokemonName]?: LocationPokemonData;
         }
     };
     connections: PokeLocation[];
+}
+
+export interface PokeLocationData<P extends PokeLocation = PokeLocation> extends _PokeLocationData  {
+    pokeLocation: P;
 }
 
 export type SegiiIslands = "Berry Forest" | "Bond Bridge" | "Canyon Entrance" | "Cape Brink" | "Five Island" | "Five Isle Meadow" | "Four Island" | "Green Path" | "Icefall Cave" | "Kindle Road" | "Lost Cave" | "Memorial Pillar" | "Mt. Ember" | "One Island" | "Outcast Island" | "Resort Gorgeous" | "Ruin Valley" | "Sevault Canyon" | "Seven Island" | "Six Island" | "Tanoby Ruins" | "Tanoby Chambers" | "Three Island" | "Three Isle Port" | "Treasure Beach" | "Two Island" | "Water Labyrinth" | "Water Path";
@@ -45,7 +50,9 @@ export type PokemonRoutes = "Route 1" | "Route 8" | "Route 10" | "Route 11" | "R
 export type PokeLocation = "Altering Cave" | "Diglett's Cave (Route 2)" | "Diglett's Cave (Route 11)" | "Indego Plateau" | "Pallet Town" | "Pokemon League Front Gate" | "Power Plant" | "Rock Tunnel 1F" | "Rock Tunnel B1F" | "Victory Road 1F" | "Victory Road 2F" | "Victory Road 3F" | "Viridian City" | SegiiIslands | Celadon | Cerulean | Cinnabar | Fuchsia | Lavender | Pewter | Saffron | SeafoamIslands | Vermilion | Viridian | PokemonRoutes;
 
 export type PokeLocationDataMap = {
-    [location in PokeLocation]: PokeLocationData;
+    [pokeLocation in PokeLocation]: PokeLocationData & {
+        pokeLocation: pokeLocation;
+    };
 }
 
 export const pokeLocationDataMap: PokeLocationDataMap = {

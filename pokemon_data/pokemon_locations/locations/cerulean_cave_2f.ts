@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const ceruleanCave2F: PokeLocationData = {
+export const ceruleanCave2F: PokeLocationData<"Cerulean Cave 2F"> = {
+    pokeLocation: "Cerulean Cave 2F",
     catchMap: {
         Cave: {
             Golbat: {

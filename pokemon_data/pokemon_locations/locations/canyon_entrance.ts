@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const canyonEntrance: PokeLocationData = {
+export const canyonEntrance: PokeLocationData<"Canyon Entrance"> = {
+    pokeLocation: "Canyon Entrance",
     catchMap: {
         Grass: {
             Spearow: {

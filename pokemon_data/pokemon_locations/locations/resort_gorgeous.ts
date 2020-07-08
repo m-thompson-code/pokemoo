@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const resortGorgeous: PokeLocationData = {
+export const resortGorgeous: PokeLocationData<"Resort Gorgeous"> = {
+    pokeLocation: "Resort Gorgeous",
     catchMap: {
         Surfing: {
             "Tentacool": {

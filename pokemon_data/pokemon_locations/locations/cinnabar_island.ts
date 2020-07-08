@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const cinnabarIsland: PokeLocationData = {
+export const cinnabarIsland: PokeLocationData<"Cinnabar Island"> = {
+    pokeLocation: "Cinnabar Island",
     catchMap: {
         Surfing: {
             Tentacool: {

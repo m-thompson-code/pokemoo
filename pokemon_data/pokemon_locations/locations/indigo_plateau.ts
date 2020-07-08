@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const indigoPlateau: PokeLocationData = {
+export const indigoPlateau: PokeLocationData<"Indego Plateau"> = {
+    pokeLocation: "Indego Plateau",
     catchMap: {
     },
     connections: [

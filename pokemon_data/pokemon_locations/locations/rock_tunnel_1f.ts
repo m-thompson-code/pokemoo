@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const rockTunnel1F: PokeLocationData = {
+export const rockTunnel1F: PokeLocationData<"Rock Tunnel 1F"> = {
+    pokeLocation: "Rock Tunnel 1F",
     catchMap: {
         Cave: {
             Geodude: {

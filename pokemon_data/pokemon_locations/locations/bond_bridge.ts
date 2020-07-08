@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const bondBridge: PokeLocationData = {
+export const bondBridge: PokeLocationData<"Bond Bridge"> = {
+    pokeLocation: "Bond Bridge",
     catchMap: {
         "Grass": {
             Pidgey: {

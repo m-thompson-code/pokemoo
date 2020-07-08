@@ -1,3 +1,5 @@
+import { PokeLocation } from './locations';
+
 export type PokemonName = "Bulbasaur" | "Ivysaur" | "Venusaur" | "Charmander" | "Charmeleon" | "Charizard" | "Squirtle" | "Wartortle" | "Blastoise" | "Caterpie" | "Metapod" | "Butterfree" | "Weedle" | "Kakuna" | "Beedrill" | "Pidgey" | "Pidgeotto" | "Pidgeot" | "Rattata" | "Raticate" | "Spearow" | "Fearow" | "Ekans" | "Arbok" | "Pikachu" | "Raichu" | "Sandshrew" | "Sandslash" | "Nidoran [Female]" | "Nidorina" | "Nidoqueen" | "Nidoran [Male]" | "Nidorino" | "Nidoking" | "Clefairy" | "Clefable" | "Vulpix" | "Ninetales" | "Jigglypuff" | "Wigglytuff" | "Zubat" | "Golbat" | "Oddish" | "Gloom" | "Vileplume" | "Paras" | "Parasect" | "Venonat" | "Venomoth" | "Diglett" | "Dugtrio" | "Meowth" | "Persian" | "Psyduck" | "Golduck" | "Mankey" | "Primeape" | "Growlithe" | "Arcanine" | "Poliwag" | "Poliwhirl" | "Poliwrath" | "Abra" | "Kadabra" | "Alakazam" | "Machop" | "Machoke" | "Machamp" | "Bellsprout" | "Weepinbell" | "Victreebel" | "Tentacool" | "Tentacruel" | "Geodude" | "Graveler" | "Golem" | "Ponyta" | "Rapidash" | "Slowpoke" | "Slowbro" | "Magnemite" | "Magneton" | "Farfetch'd" | "Doduo" | "Dodrio" | "Seel" | "Dewgong" | "Grimer" | "Muk" | "Shellder" | "Cloyster" | "Gastly" | "Haunter" | "Gengar" | "Onix" | "Drowzee" | "Hypno" | "Krabby" | "Kingler" | "Voltorb" | "Electrode" | "Exeggcute" | "Exeggutor" | "Cubone" | "Marowak" | "Hitmonlee" | "Hitmonchan" | "Lickitung" | "Koffing" | "Weezing" | "Rhyhorn" | "Rhydon" | "Chansey" | "Tangela" | "Kangaskhan" | "Horsea" | "Seadra" | "Goldeen" | "Seaking" | "Staryu" | "Starmie" | "Mr. Mime" | "Scyther" | "Jynx" | "Electabuzz" | "Magmar" | "Pinsir" | "Tauros" | "Magikarp" | "Gyarados" | "Lapras" | "Ditto" | "Eevee" | "Vaporeon" | "Jolteon" | "Flareon" | "Porygon" | "Omanyte" | "Omastar" | "Kabuto" | "Kabutops" | "Aerodactyl" | "Snorlax" | "Articuno" | "Zapdos" | "Moltres" | "Dratini" | "Dragonair" | "Dragonite" | "Mewtwo" | "Mew"
 
 export type EvolutionStone = 'Leaf Stone' | 'Thunder Stone' | 'Fire Stone' | 'Water Stone' | 'Moon Stone';
@@ -51,7 +53,7 @@ export interface HasEvolutions {
     evolutions: PokemonName[];
 }
 
-export interface _PokemonData {
+export interface __PokemonData {
     pokemonName: PokemonName;
     expGrowth: ExpGrowth;
     expGrowthText: ExpGrowthText;
@@ -63,9 +65,21 @@ export interface _PokemonData {
     captureRate: number;
 }
 
-export type PokemonData = _PokemonData & HasExpGrowth & (CanEvolve | CannotEvolve | HasEvolutions);
+export type _PokemonData = __PokemonData & HasExpGrowth & (CanEvolve | CannotEvolve | HasEvolutions);
 
-export const pokemonDatas: PokemonData[] = [
+export type PokemonData = _PokemonData & {
+    evolvedFrom?: PokemonName;
+    pokeLocations: {
+
+    },
+    pokeLocationMap: {
+        [pokeLocation in PokeLocation]?: {
+
+        }
+    }
+}
+
+export const pokemonDatas: _PokemonData[] = [
     {
         pokemonName: "Bulbasaur",
         expGrowth: 1059860,
@@ -1424,9 +1438,9 @@ export const pokemonNames: PokemonName[] = [
 
 // We are going to cast it since we will be validating that there is everything pokemonName as its attributes dynamically
 const _pokemonDataMap: {
-    [pokemonName in PokemonName]: PokemonData;
+    [pokemonName in PokemonName]: _PokemonData;
 } = {} as {
-    [pokemonName in PokemonName]: PokemonData;
+    [pokemonName in PokemonName]: _PokemonData;
 };
 
 // Assuming every pokemon is in the pokemonDatas (Validation of this being true is done in test.sepc.ts for pokemon_data)
@@ -1435,3 +1449,27 @@ for (const pokemonData of pokemonDatas) {
 }
 
 export const pokemonDataMap = _pokemonDataMap;
+
+export type TT = {
+    moo: AB;
+    cow: string;
+}
+
+export type AB = "A" | "B";
+
+export type Test = {
+    [ab in AB]: TT & {
+        moo: ab;
+    };
+}
+
+export const _t: Test = {
+    A: {
+        moo: "A",
+        cow: "moocow",
+    },
+    B: {
+        moo: "B",
+        cow: "moocow",
+    },
+}

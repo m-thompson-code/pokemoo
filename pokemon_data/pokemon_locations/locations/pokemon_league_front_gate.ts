@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const pokemonLeagueFrontGate: PokeLocationData = {
+export const pokemonLeagueFrontGate: PokeLocationData<"Pokemon League Front Gate"> = {
+    pokeLocation: "Pokemon League Front Gate",
     catchMap: {
     },
     connections: [

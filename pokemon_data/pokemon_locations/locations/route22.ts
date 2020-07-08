@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const route22: PokeLocationData = {
+export const route22: PokeLocationData<"Route 22"> = {
+    pokeLocation: "Route 22",
     catchMap: {
         Grass: {
             Rattata: {

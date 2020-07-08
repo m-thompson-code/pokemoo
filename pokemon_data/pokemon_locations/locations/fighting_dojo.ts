@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const fightingDojo: PokeLocationData = {
+export const fightingDojo: PokeLocationData<"Fighting Dojo"> = {
+    pokeLocation: "Fighting Dojo",
     catchMap: {
         Special: {
             Hitmonchan: {

@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const route25: PokeLocationData = {
+export const route25: PokeLocationData<"Route 25"> = {
+    pokeLocation: "Route 25",
     catchMap: {
         Grass: {// Mixing version rates
             Caterpie: {

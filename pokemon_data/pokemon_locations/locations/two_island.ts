@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const twoIsland: PokeLocationData = {
+export const twoIsland: PokeLocationData<"Two Island"> = {
+    pokeLocation: "Two Island",
     catchMap: {
     },
     connections: [

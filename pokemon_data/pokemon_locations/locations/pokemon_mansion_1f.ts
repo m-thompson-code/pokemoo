@@ -1,6 +1,7 @@
 import { PokeLocationData } from "../../locations";
 
-export const pokemonMansion1F: PokeLocationData = {
+export const pokemonMansion1F: PokeLocationData<"Pokemon Mansion 1F"> = {
+    pokeLocation: "Pokemon Mansion 1F",
     catchMap: {// This area has mixed rating on versions, so we had to mix them
         Walking: {
             Rattata: {
