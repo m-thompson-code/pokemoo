@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 
-import { PokemonName, pokeLocationDataMap, PokeLocation, PokeLocationData, pokeLocations, LocationPokemonData, SpawnType } from 'pokemon_data';
+import { PokemonName, pokeLocationDataExportMap, PokeLocation, PokeLocationData, pokeLocations, LocationPokemonData, SpawnType } from 'pokemon_data';
 import { PokeLocationMapObjComponent } from '@app/components/poke-location-map-obj/poke-location-map-obj.component';
 
 export type _LocationPokemonData = LocationPokemonData & {
@@ -253,7 +253,7 @@ export class HomeComponent implements OnInit {
             left: `${_lm * left}%`,
             _top: top,
             _left: left,
-            connections: pokeLocationDataMap[pokeLocation].connections,
+            connections: pokeLocationDataExportMap[pokeLocation].connections,
             components: [],
         };
 
@@ -262,7 +262,7 @@ export class HomeComponent implements OnInit {
     }
 
     public setPokeLocation(pokeLocation: PokeLocation): void {
-        this.pokeLocationData = pokeLocationDataMap[pokeLocation];
+        this.pokeLocationData = pokeLocationDataExportMap[pokeLocation];
 
         this.filteredSpawnTypes = [];
         this.filteredSpawnPokemonMap = {};
@@ -311,18 +311,13 @@ export class HomeComponent implements OnInit {
                 };
 
                 if (_locationPokemonData.inFireRed) {
-                    // totalRate += _locationPokemonData.rate;
                     _locationPokemonData.mixRate += _locationPokemonData.rate;
                 }
                 if (_locationPokemonData.inLeafGreen) {
-                    // totalRate += _locationPokemonData.rate;
                     _locationPokemonData.mixRate += _locationPokemonData.rate;
                 }
 
                 totalRate += _locationPokemonData.mixRate;
-
-                // const _locationPokemonData: LocationPokemonData & {pokemon?: Pokemon} = _p;
-                // _locationPokemonData.pokemon = pokemon;
 
                 filteredSpawnPokemons.push(_locationPokemonData);
             }
