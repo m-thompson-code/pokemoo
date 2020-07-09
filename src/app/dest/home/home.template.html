@@ -27,12 +27,13 @@
     <ng-container *ngIf="!pokeLocationData">
         <p>Unexpected issue loading pokeLocation data for this location</p>
     </ng-container>
+
     <ng-container *ngIf="pokeLocationData">
-        <ng-container *ngFor="let filteredSpawnPokemonData of filteredSpawnPokemonArrays">
+        <ng-container *ngFor="let filteredSpawnPokemonData of pokeLocationData?.catchs">
             <p>~ Spawn Type: {{ filteredSpawnPokemonData.spawnType }}</p>
 
-            <ng-container *ngIf="filteredSpawnPokemonData.locationPokemonDatas as _locationPokemonDatas">
-                <ng-container *ngFor="let _locationPokemonData of _locationPokemonDatas">
+            <ng-container *ngIf="filteredSpawnPokemonData.locationPokemonDatas">
+                <ng-container *ngFor="let _locationPokemonData of filteredSpawnPokemonData.locationPokemonDatas">
                     <ng-container *ngIf="_locationPokemonData">
                         <p>~ ~ Pokemon: {{ _locationPokemonData.pokemonName }} Lv
                             {{ _locationPokemonData.minLevel }}

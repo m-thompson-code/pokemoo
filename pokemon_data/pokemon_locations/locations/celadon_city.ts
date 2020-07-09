@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const celadonCity: PokeLocationData<"Celadon City"> = {
+export const celadonCity: PokeLocationDataExport<"Celadon City"> = {
     pokeLocation: "Celadon City",
     catchMap: {
         Surfing: {
@@ -62,8 +62,8 @@ export const celadonCity: PokeLocationData<"Celadon City"> = {
         },
         "Special": {
             Bulbasaur: {
-                inFireRed: false,
-                inLeafGreen: false,
+                inFireRed: true,
+                inLeafGreen: true,
                 minLevel: 10,
                 maxLevel: 10,
                 rate: 100,

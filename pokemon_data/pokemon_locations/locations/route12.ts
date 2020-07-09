@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const route12: PokeLocationData<"Route 12"> = {
+export const route12: PokeLocationDataExport<"Route 12"> = {
     pokeLocation: "Route 12",
     catchMap: {
         Grass: {

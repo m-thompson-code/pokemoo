@@ -1,7 +1,7 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 import { pokemonTower3F } from "./pokemon_tower_3f";
 
-export const pokemonTower5F: PokeLocationData<"Pokemon Tower 5F"> = {
+export const pokemonTower5F: PokeLocationDataExport<"Pokemon Tower 5F"> = {
     pokeLocation: "Pokemon Tower 5F",
     catchMap: pokemonTower3F.catchMap,
     connections: [

@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 
-import { PokemonName, pokeLocationDataExportMap, PokeLocation, PokeLocationData, pokeLocations, LocationPokemonData, SpawnType } from 'pokemon_data';
+import { pokeLocationDataMap, PokeLocation, PokeLocationData, pokeLocations, LocationPokemonData, SpawnType } from 'pokemon_data';
 import { PokeLocationMapObjComponent } from '@app/components/poke-location-map-obj/poke-location-map-obj.component';
 
-export type _LocationPokemonData = LocationPokemonData & {
-    pokemonName: PokemonName;
-    mixRate: number;// Combined rate between both versions of the game
-    mixRatePercent: number;// Decimal percent of mixRate
-    totalRate: number;
-};
+// export type _LocationPokemonData = LocationPokemonData & {
+//     pokemonName: PokemonName;
+//     mixRate: number;// Combined rate between both versions of the game
+//     mixRatePercent: number;// Decimal percent of mixRate
+//     totalRate: number;
+// };
 
 export interface PokeLocationMapObj {
     pokeLocation: PokeLocation;
@@ -46,15 +46,18 @@ export class HomeComponent implements OnInit {
     public pokeLocationData?: PokeLocationData;
 
     public pokeLocations: PokeLocation[] = [];
-    public filteredSpawnTypes: SpawnType[] = [];
-    public filteredSpawnPokemonMap: {
-        [spawnType in SpawnType]?: _LocationPokemonData[];
-    } = {};
+    // public filteredSpawnTypes: SpawnType[] = [];
+    // public filteredSpawnPokemonMap: {
+    //     [spawnType in SpawnType]?: LocationPokemonData[];
+    // } = {};
 
-    public filteredSpawnPokemonArrays: {
-        spawnType: SpawnType;
-        locationPokemonDatas: _LocationPokemonData[];
-    }[] = [];
+    // public filteredSpawnPokemonArrays: {
+    //     spawnType: SpawnType;
+    //     locationPokemonDatas: LocationPokemonData[];
+    // }[] = [];
+
+    // public filteredSpawnType?: SpawnType;
+    // public filteredSpawnLocationPokemonDatas?: LocationPokemonData[] = [];
 
     public pokeLocationMapObjs: PokeLocationMapObj[] = [];
 
@@ -69,6 +72,7 @@ export class HomeComponent implements OnInit {
     public showMap?: boolean;
 
     constructor(private cdRef: ChangeDetectorRef) {
+        console.log(pokeLocationDataMap);
     }
 
     private setTiles(cols: number, rows: number): void {
@@ -258,7 +262,7 @@ export class HomeComponent implements OnInit {
             left: `${_lm * left}%`,
             _top: top,
             _left: left,
-            connections: pokeLocationDataExportMap[pokeLocation].connections,
+            connections: pokeLocationDataMap[pokeLocation].connections,
             components: [],
         };
 
@@ -267,88 +271,40 @@ export class HomeComponent implements OnInit {
     }
 
     public setPokeLocation(pokeLocation: PokeLocation): void {
-        this.pokeLocationData = pokeLocationDataExportMap[pokeLocation];
+        this.pokeLocationData = pokeLocationDataMap[pokeLocation];
 
-        this.filteredSpawnTypes = [];
-        this.filteredSpawnPokemonMap = {};
-        this.filteredSpawnPokemonArrays = [];
+        // this.filteredSpawnTypes = [];
+        // this.filteredSpawnPokemonMap = {};
+        // // this.filteredSpawnPokemonArrays = [];
 
-        for (let spawnType of keys(this.pokeLocationData.catchMap)) {
-            let totalRate = 0;
+        // for (const spawnType of keys(this.pokeLocationData.catchMap)) {
+        //     const filteredSpawnPokemons: LocationPokemonData[] = [];
 
-            const filteredSpawnPokemons: _LocationPokemonData[] = [];
+        //     this.filteredSpawnPokemonMap[spawnType] = filteredSpawnPokemons;
 
-            this.filteredSpawnPokemonMap[spawnType] = filteredSpawnPokemons;
+        //     this.filteredSpawnTypes.push(spawnType);
 
-            this.filteredSpawnTypes.push(spawnType);
+        //     // this.filteredSpawnPokemonArrays.push({
+        //     //     spawnType: spawnType,
+        //     //     locationPokemonDatas: filteredSpawnPokemons,
+        //     // });
 
-            this.filteredSpawnPokemonArrays.push({
-                spawnType: spawnType,
-                locationPokemonDatas: filteredSpawnPokemons,
-            });
+        //     const _locationPokemonDataMap = this.pokeLocationData.catchMap[spawnType];
 
-            const _locationPokemonDataMap = this.pokeLocationData.catchMap[spawnType];
+        //     if (!_locationPokemonDataMap) {
+        //         console.warn("Unexpected _locationPokemonDataMap");
+        //         return;
+        //     }
 
-            if (!_locationPokemonDataMap) {
-                console.warn("Unexpected _locationPokemonDataMap");
-                return;
-            }
-
-            for (let pokemonName of keys(_locationPokemonDataMap)) {
-                const _p = _locationPokemonDataMap[pokemonName];
-
-                if (!_p) {
-                    continue;
-                }
-
-                // Avoid mutating the source for LocationPokemonData (and we're going to be adding additional attributes)
-                const _locationPokemonData: _LocationPokemonData = {
-                    rate: _p.rate,
-                    minLevel: _p.minLevel,
-                    maxLevel: _p.maxLevel,
-                    note: _p.note,
-                    inFireRed: _p.inFireRed,
-                    inLeafGreen: _p.inLeafGreen,
-                    pokemonName: pokemonName,
-                    mixRate: 0,
-                    mixRatePercent: 0,
-                    totalRate: 0,
-                };
-
-                if (_locationPokemonData.inFireRed) {
-                    _locationPokemonData.mixRate += _locationPokemonData.rate;
-                }
-                if (_locationPokemonData.inLeafGreen) {
-                    _locationPokemonData.mixRate += _locationPokemonData.rate;
-                }
-
-                totalRate += _locationPokemonData.mixRate;
-
-                filteredSpawnPokemons.push(_locationPokemonData);
-            }
-
-            if (!totalRate) {
-                console.warn("Unexpected totalRate was 0");
-                debugger;
-            }
-
-            for (const _locationPokemonData of filteredSpawnPokemons) {
-                _locationPokemonData.mixRatePercent = _locationPokemonData.mixRate / totalRate;
-                _locationPokemonData.totalRate = totalRate;
-            }
-        }
+        //     // this.filteredSpawnType = spawnType;
+        //     // this.filteredSpawnLocationPokemonDatas = _locationPokemonDataMap.catchs;
+        // }
 
         this.pokeLocation = pokeLocation;
     }
 
     public toggleMap(): void {
         this.showMap = !this.showMap;
-    }
-
-    public compareFnTest(aKeyValue: KeyValue, bKeyValue: KeyValue): number {
-        // a.localeCompare(b.firstname);
-        console.log(aKeyValue, bKeyValue);
-        return 1;
     }
 
     public ngOnDestroy(): void {

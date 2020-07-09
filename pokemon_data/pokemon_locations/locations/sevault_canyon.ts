@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const sevaultCanyon: PokeLocationData<"Sevault Canyon"> = {
+export const sevaultCanyon: PokeLocationDataExport<"Sevault Canyon"> = {
     pokeLocation: "Sevault Canyon",
     catchMap: {// FR also can get Skarmory, but we only do gen 1, so treating both versions the same
         Cave: {

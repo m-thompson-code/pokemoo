@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const mtEmber: PokeLocationData<"Mt. Ember"> = {
+export const mtEmber: PokeLocationDataExport<"Mt. Ember"> = {
     pokeLocation: "Mt. Ember",
     catchMap: {
         Cave: {// Ignoring the actual Cave section and replacing it with its Grass area

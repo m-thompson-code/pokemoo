@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const viridianForest: PokeLocationData<"Viridian Forest"> = {
+export const viridianForest: PokeLocationDataExport<"Viridian Forest"> = {
     pokeLocation: "Viridian Forest",
     catchMap: {
         Grass: {// Mixing rates for both versions since they overlap rates

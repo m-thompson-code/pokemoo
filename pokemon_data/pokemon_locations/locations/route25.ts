@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const route25: PokeLocationData<"Route 25"> = {
+export const route25: PokeLocationDataExport<"Route 25"> = {
     pokeLocation: "Route 25",
     catchMap: {
         Grass: {// Mixing version rates
@@ -148,8 +148,8 @@ export const route25: PokeLocationData<"Route 25"> = {
         },
         "Special": {// Sources say Charmander may be in Route 24 instead, but the way the game will work, this is better since it would be easy to get two charmanders if it was on 24
             Charmander: {
-                inFireRed: false,
-                inLeafGreen: false,
+                inFireRed: true,
+                inLeafGreen: true,
                 minLevel: 10,
                 maxLevel: 10,
                 rate: 100,

@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const vermilionCity: PokeLocationData<"Vermilion City"> = {
+export const vermilionCity: PokeLocationDataExport<"Vermilion City"> = {
     pokeLocation: "Vermilion City",
     catchMap: {
         Special: {
@@ -13,8 +13,8 @@ export const vermilionCity: PokeLocationData<"Vermilion City"> = {
                 note: "Gift Pokemon. Limit one per visiting location",
             },
             Squirtle: {
-                inFireRed: false,
-                inLeafGreen: false,
+                inFireRed: true,
+                inLeafGreen: true,
                 minLevel: 10,
                 maxLevel: 10,
                 rate: 100,

@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const viridianCity: PokeLocationData<"Viridian City"> = {
+export const viridianCity: PokeLocationDataExport<"Viridian City"> = {
     pokeLocation: "Viridian City",
     catchMap: {
         Surfing: {

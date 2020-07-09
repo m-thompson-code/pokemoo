@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const celdadonCondominiums: PokeLocationData<"Celadon Condominiums"> = {
+export const celdadonCondominiums: PokeLocationDataExport<"Celadon Condominiums"> = {
     pokeLocation: "Celadon Condominiums",
     catchMap: {
         Special: {

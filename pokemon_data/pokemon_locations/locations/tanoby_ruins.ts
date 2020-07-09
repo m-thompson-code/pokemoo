@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const tanobyRuins: PokeLocationData<"Tanoby Ruins"> = {
+export const tanobyRuins: PokeLocationDataExport<"Tanoby Ruins"> = {
     pokeLocation: "Tanoby Ruins",
     catchMap: {
         Surfing: {// Only support for gen 1 means no Mantine from LG, so just using FR

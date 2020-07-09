@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const waterLabyrinth: PokeLocationData<"Water Labyrinth"> = {
+export const waterLabyrinth: PokeLocationDataExport<"Water Labyrinth"> = {
     pokeLocation: "Water Labyrinth",
     catchMap: {
         Surfing: {

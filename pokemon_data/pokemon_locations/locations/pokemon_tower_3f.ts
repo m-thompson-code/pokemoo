@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const pokemonTower3F: PokeLocationData<"Pokemon Tower 3F"> = {
+export const pokemonTower3F: PokeLocationDataExport<"Pokemon Tower 3F"> = {
     pokeLocation: "Pokemon Tower 3F",
     catchMap: {// All these floors are basedon 7F since they're basically the same and more Haunters and Cubones is better :^)
         Walking: {

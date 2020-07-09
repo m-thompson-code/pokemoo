@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const route23IndigoPlateau: PokeLocationData<"Route 23 (Indigo Plateau)"> = {
+export const route23IndigoPlateau: PokeLocationDataExport<"Route 23 (Indigo Plateau)"> = {
     pokeLocation: "Route 23 (Indigo Plateau)",
     catchMap: {
         Grass: {

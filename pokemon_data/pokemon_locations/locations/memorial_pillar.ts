@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const memorialPillar: PokeLocationData<"Memorial Pillar"> = {
+export const memorialPillar: PokeLocationDataExport<"Memorial Pillar"> = {
     pokeLocation: "Memorial Pillar",
     catchMap: {
         Surfing: {

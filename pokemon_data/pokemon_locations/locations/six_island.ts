@@ -1,6 +1,6 @@
-import { PokeLocationData } from "../../locations";
+import { PokeLocationDataExport } from "../../poke_locations";
 
-export const sixIsland: PokeLocationData<"Six Island"> = {
+export const sixIsland: PokeLocationDataExport<"Six Island"> = {
     pokeLocation: "Six Island",
     catchMap: {
     },
