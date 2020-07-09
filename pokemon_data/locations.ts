@@ -24,7 +24,7 @@ export interface LocationPokemonData<P extends PokemonName = PokemonName> {
 export interface _PokeLocationData {
     catchMap: {
         [spawnType in SpawnType]?: {
-            [pokemonName in PokemonName]?: LocationPokemonData;
+            [pokemonName in PokemonName]?: LocationPokemonData<pokemonName>;
         }
     };
     connections: PokeLocation[];

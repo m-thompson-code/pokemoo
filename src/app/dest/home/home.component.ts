@@ -23,6 +23,11 @@ export interface MapLine {
     pointB: HTMLElement;
 }
 
+export interface KeyValue<T=string, V=any> {
+    key: T;
+    value: V;
+}
+
 // source: https://stackoverflow.com/questions/52856496/typescript-object-keys-return-string
 // https://github.com/microsoft/TypeScript/issues/20503
 export function keys<O>(o: O): (keyof O)[] {
@@ -338,6 +343,12 @@ export class HomeComponent implements OnInit {
 
     public toggleMap(): void {
         this.showMap = !this.showMap;
+    }
+
+    public compareFnTest(aKeyValue: KeyValue, bKeyValue: KeyValue): number {
+        // a.localeCompare(b.firstname);
+        console.log(aKeyValue, bKeyValue);
+        return 1;
     }
 
     public ngOnDestroy(): void {
