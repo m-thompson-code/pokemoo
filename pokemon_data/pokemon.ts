@@ -1,4 +1,4 @@
-import { PokeLocation, SpawnType, LocationPokemonData } from './poke_locations';
+import { PokeLocation, SpawnType, LocationPokemonData, pokeLocationDatas } from './poke_locations';
 
 export type PokemonName = "Bulbasaur" | "Ivysaur" | "Venusaur" | "Charmander" | "Charmeleon" | "Charizard" | "Squirtle" | "Wartortle" | "Blastoise" | "Caterpie" | "Metapod" | "Butterfree" | "Weedle" | "Kakuna" | "Beedrill" | "Pidgey" | "Pidgeotto" | "Pidgeot" | "Rattata" | "Raticate" | "Spearow" | "Fearow" | "Ekans" | "Arbok" | "Pikachu" | "Raichu" | "Sandshrew" | "Sandslash" | "Nidoran [Female]" | "Nidorina" | "Nidoqueen" | "Nidoran [Male]" | "Nidorino" | "Nidoking" | "Clefairy" | "Clefable" | "Vulpix" | "Ninetales" | "Jigglypuff" | "Wigglytuff" | "Zubat" | "Golbat" | "Oddish" | "Gloom" | "Vileplume" | "Paras" | "Parasect" | "Venonat" | "Venomoth" | "Diglett" | "Dugtrio" | "Meowth" | "Persian" | "Psyduck" | "Golduck" | "Mankey" | "Primeape" | "Growlithe" | "Arcanine" | "Poliwag" | "Poliwhirl" | "Poliwrath" | "Abra" | "Kadabra" | "Alakazam" | "Machop" | "Machoke" | "Machamp" | "Bellsprout" | "Weepinbell" | "Victreebel" | "Tentacool" | "Tentacruel" | "Geodude" | "Graveler" | "Golem" | "Ponyta" | "Rapidash" | "Slowpoke" | "Slowbro" | "Magnemite" | "Magneton" | "Farfetch'd" | "Doduo" | "Dodrio" | "Seel" | "Dewgong" | "Grimer" | "Muk" | "Shellder" | "Cloyster" | "Gastly" | "Haunter" | "Gengar" | "Onix" | "Drowzee" | "Hypno" | "Krabby" | "Kingler" | "Voltorb" | "Electrode" | "Exeggcute" | "Exeggutor" | "Cubone" | "Marowak" | "Hitmonlee" | "Hitmonchan" | "Lickitung" | "Koffing" | "Weezing" | "Rhyhorn" | "Rhydon" | "Chansey" | "Tangela" | "Kangaskhan" | "Horsea" | "Seadra" | "Goldeen" | "Seaking" | "Staryu" | "Starmie" | "Mr. Mime" | "Scyther" | "Jynx" | "Electabuzz" | "Magmar" | "Pinsir" | "Tauros" | "Magikarp" | "Gyarados" | "Lapras" | "Ditto" | "Eevee" | "Vaporeon" | "Jolteon" | "Flareon" | "Porygon" | "Omanyte" | "Omastar" | "Kabuto" | "Kabutops" | "Aerodactyl" | "Snorlax" | "Articuno" | "Zapdos" | "Moltres" | "Dratini" | "Dragonair" | "Dragonite" | "Mewtwo" | "Mew"
 
@@ -8,12 +8,6 @@ export type SpecialEvolution = 'Trade Back Disc';
 
 export type ExpGrowthText = 'Slow' | 'Medium Slow' | 'Medium Fast' | 'Fast';
 export type ExpGrowth = 1250000 | 1059860 | 1000000 | 800000;
-
-// source: https://stackoverflow.com/questions/52856496/typescript-object-keys-return-string
-// https://github.com/microsoft/TypeScript/issues/20503
-export function keys<O>(o: O): (keyof O)[] {
-    return Object.keys(o) as (keyof O)[];
-}
 
 export interface SlowExpGrowth {
     expGrowth: 1250000;
@@ -74,26 +68,24 @@ export interface __PokemonData {
 // Mainly __PokemonData, the rest of this type is to validate pairing attributes (expGrowth / expGrowthText, etc)
 export type _PokemonData = __PokemonData & HasExpGrowth & (CanEvolve | CannotEvolve | HasEvolutions);
 
-export interface PokemonSpecificLocationData {
+export interface PokemonSpecificLocationData<P extends PokemonName = PokemonName> {
     pokeLocation: PokeLocation;
     catchMap: {
-        [spawnType in SpawnType]?: LocationPokemonData;
+        [spawnType in SpawnType]?: LocationPokemonData<P>;
     };
+    catchs: LocationPokemonData<P, SpawnType>[];
 }
 
-export type PokemonSpecificLocationDataMap = {
-    [pokeLocation in PokeLocation]?: PokemonSpecificLocationData;
+export type PokemonSpecificLocationDataMap<P extends PokemonName = PokemonName> = {
+    [pokeLocation in PokeLocation]?: PokemonSpecificLocationData<P>;
 }
 
 // These value is populated below where _pokemonDatas is initalized
-export type PokemonData = _PokemonData & {
+export type PokemonData<P extends PokemonName = PokemonName> = _PokemonData & {
+    pokemonName: P;
     evolvedFrom?: PokemonName;
-    pokeLocations: PokemonSpecificLocationData[],
-    pokeLocationMap: PokemonSpecificLocationDataMap;
-
-    mixRate: number;
-    mixRatePercent: number;
-    totalRate: number;
+    pokeLocations: PokemonSpecificLocationData<P>[],
+    pokeLocationMap: PokemonSpecificLocationDataMap<P>;
 }
 
 export type PokemonDataMap = {
@@ -574,7 +566,7 @@ export const _pokemonDatas: _PokemonData[] = [
         expGrowth: 1250000,
         expGrowthText: 'Slow',
         evolutionMethod: 'Fire Stone',
-        evolution: "Primeape",
+        evolution: "Arcanine",
         pokedexEntry: 58,
         captureRate: 190,
     },
@@ -1467,104 +1459,86 @@ export const pokemonDataMap: PokemonDataMap = {} as PokemonDataMap;
 //         [pokeLocation in PokeLocation]?: PokemonSpecificLocationData;
 //     };
 
-// // Assuming every pokemon is in the pokemonDatas (Validation of this being true is done in test.sepc.ts for pokemon_data)
-// for (const _pokemonData of _pokemonDatas) {
-//     const pokeLocations: PokemonSpecificLocationData[] = [];
-//     const pokeLocationMap: PokemonSpecificLocationDataMap = {};
+// Assuming every pokemon is in the pokemonDatas (Validation of this being true is done in test.sepc.ts for pokemon_data)
+for (const _pokemonData of _pokemonDatas) {
+    const pokeLocations: PokemonSpecificLocationData[] = [];
+    const pokeLocationMap: PokemonSpecificLocationDataMap = {};
 
-//     const pokemonData: PokemonData = {
-//         pokemonName: _pokemonData.pokemonName,
-//         expGrowth: _pokemonData.expGrowth as any,// These values are validated above when populating the _PokemonData array
-//         expGrowthText: _pokemonData.expGrowthText as any,// These values are validated above when populating the _PokemonData array
-//         evolutionMethod: _pokemonData.evolutionMethod as any,// These values are validated above when populating the _PokemonData array
-//         evolution: _pokemonData.evolution as any,// These values are validated above when populating the _PokemonData array
-//         evolutionMethods: _pokemonData.evolutionMethods as any,// These values are validated above when populating the _PokemonData array
-//         evolutions: _pokemonData.evolutions as any,// These values are validated above when populating the _PokemonData array
-//         pokedexEntry: _pokemonData.pokedexEntry as any,// These values are validated above when populating the _PokemonData array
-//         captureRate: _pokemonData.captureRate,
+    const pokemonData: PokemonData = {
+        pokemonName: _pokemonData.pokemonName,
+        expGrowth: _pokemonData.expGrowth as any,// These values are validated above when populating the _PokemonData array
+        expGrowthText: _pokemonData.expGrowthText as any,// These values are validated above when populating the _PokemonData array
+        evolutionMethod: _pokemonData.evolutionMethod as any,// These values are validated above when populating the _PokemonData array
+        evolution: _pokemonData.evolution as any,// These values are validated above when populating the _PokemonData array
+        evolutionMethods: _pokemonData.evolutionMethods as any,// These values are validated above when populating the _PokemonData array
+        evolutions: _pokemonData.evolutions as any,// These values are validated above when populating the _PokemonData array
+        pokedexEntry: _pokemonData.pokedexEntry,
+        captureRate: _pokemonData.captureRate,
 
-//         evolvedFrom: undefined,// Values are empty / undefined / 0 and should be populated below
-//         pokeLocations: pokeLocations,// Values are empty / undefined / 0 and should be populated below
-//         pokeLocationMap: pokeLocationMap,// Values are empty / undefined / 0 and should be populated below
-//     };
+        evolvedFrom: undefined,// Values are empty / undefined / 0 and should be populated below
+        pokeLocations: pokeLocations,// Values are empty / undefined / 0 and should be populated below
+        pokeLocationMap: pokeLocationMap,// Values are empty / undefined / 0 and should be populated below
+    };
 
-//     pokemonDataMap[_pokemonData.pokemonName] = pokemonData;
-// }
+    pokemonDataMap[_pokemonData.pokemonName] = pokemonData;
+    pokemonDatas.push(pokemonData);
+}
 
-// export type _LocationPokemonData = LocationPokemonData & {
-//     pokemonName: PokemonName;
-//     mixRate: number;// Combined rate between both versions of the game
-//     mixRatePercent: number;// Decimal percent of mixRate
-//     totalRate: number;
-// };
+for (const pokeLocationData of pokeLocationDatas) {
+    const pokeLocation = pokeLocationData.pokeLocation;
 
-// for (const pokeLocationData of pokeLocationDatas) {
+    const catchs = pokeLocationData.catchs;
 
-//     const filteredSpawnTypes: SpawnType[] = [];
-//     const filteredSpawnPokemonMap = {};
-//     // const filteredSpawnPokemonArrays = [];
+    for (const spawnPokemonData of catchs) {
+        const spawnType = spawnPokemonData.spawnType;
+        const locationPokemonDatas = spawnPokemonData.locationPokemonDatas;
 
-//     for (let spawnType of keys(pokeLocationData.catchMap)) {
-//         let totalRate = 0;
+        for (const locationPokemonData of locationPokemonDatas) {
+            const pokemonName = locationPokemonData.pokemonName;
 
-//         const filteredSpawnPokemonDatas: _LocationPokemonData[] = [];
+            const pokemonData = pokemonDataMap[pokemonName];
 
-//         filteredSpawnPokemonMap[spawnType] = filteredSpawnPokemonDatas;
+            let pokemonSpecificLocationData: PokemonSpecificLocationData = pokemonData.pokeLocationMap[pokeLocation] || {
+                pokeLocation: pokeLocation,
+                catchMap: {},
+                catchs: [],
+            };
 
-//         filteredSpawnTypes.push(spawnType);
+            if (!pokemonData.pokeLocationMap[pokeLocation]) {
+                pokemonData.pokeLocationMap[pokeLocation] = pokemonSpecificLocationData;
+                pokemonData.pokeLocations.push(pokemonSpecificLocationData);
+            }
+            
+            pokemonSpecificLocationData.catchMap[spawnType] = locationPokemonData;
+            pokemonSpecificLocationData.catchs.push(locationPokemonData);
+        }
+    }
+}
 
-//         // filteredSpawnPokemonArrays.push({
-//         //     spawnType: spawnType,
-//         //     locationPokemonDatas: filteredSpawnPokemons,
-//         // });
+const assignEvolvedFrom = (evolutionData: PokemonData, evolvedFrom: PokemonName): void => {
+    if (evolutionData.evolvedFrom) {
+        console.warn("envolvedFrom already defined");
+        debugger;
+    }
 
-//         const _locationPokemonDataMap = pokeLocationData.catchMap[spawnType];
+    evolutionData.evolvedFrom = evolvedFrom;
+}
 
-//         if (!_locationPokemonDataMap) {
-//             console.warn("Unexpected _locationPokemonDataMap");
-//         }
+for (const pokemonName of pokemonNames) {
+    const pokemonData = pokemonDataMap[pokemonName];
 
-//         for (let pokemonName of keys(_locationPokemonDataMap)) {
-//             const _p = _locationPokemonDataMap[pokemonName];
+    // Populate evolvedFrom for evolutions
+    if (pokemonData.evolution) {
+        const evolutionData = pokemonDataMap[pokemonData.evolution];
 
-//             if (!_p) {
-//                 continue;
-//             }
+        assignEvolvedFrom(evolutionData, pokemonName);
+    }
 
-//             // Avoid mutating the source for LocationPokemonData (and we're going to be adding additional attributes)
-//             const _locationPokemonData: _LocationPokemonData = {
-//                 rate: _p.rate,
-//                 minLevel: _p.minLevel,
-//                 maxLevel: _p.maxLevel,
-//                 note: _p.note,
-//                 inFireRed: _p.inFireRed,
-//                 inLeafGreen: _p.inLeafGreen,
-//                 pokemonName: pokemonName,
-//                 mixRate: 0,
-//                 mixRatePercent: 0,
-//                 totalRate: 0,
-//             };
+    if (pokemonData.evolutions) {
+        for (const evolutionName of pokemonData.evolutions) {
+            const evolutionData = pokemonDataMap[evolutionName];
 
-//             if (_locationPokemonData.inFireRed) {
-//                 _locationPokemonData.mixRate += _locationPokemonData.rate;
-//             }
-//             if (_locationPokemonData.inLeafGreen) {
-//                 _locationPokemonData.mixRate += _locationPokemonData.rate;
-//             }
-
-//             totalRate += _locationPokemonData.mixRate;
-
-//             filteredSpawnPokemons.push(_locationPokemonData);
-//         }
-
-//         if (!totalRate) {
-//             console.warn("Unexpected totalRate was 0");
-//             debugger;
-//         }
-
-//         for (const _locationPokemonData of filteredSpawnPokemons) {
-//             _locationPokemonData.mixRatePercent = _locationPokemonData.mixRate / totalRate;
-//             _locationPokemonData.totalRate = totalRate;
-//         }
-//     }
-// }
+            assignEvolvedFrom(evolutionData, pokemonName);
+        }
+    }
+}

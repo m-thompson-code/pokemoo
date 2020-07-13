@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 
-import { pokeLocationDataMap, PokeLocation, PokeLocationData, pokeLocations, LocationPokemonData, SpawnType } from 'pokemon_data';
+import { pokeLocationDataMap, PokeLocation, PokeLocationData, pokeLocations, pokemonDatas } from 'pokemon_data';
 import { PokeLocationMapObjComponent } from '@app/components/poke-location-map-obj/poke-location-map-obj.component';
 
 // export type _LocationPokemonData = LocationPokemonData & {
@@ -73,6 +73,7 @@ export class HomeComponent implements OnInit {
 
     constructor(private cdRef: ChangeDetectorRef) {
         console.log(pokeLocationDataMap);
+        console.log(pokemonDatas);
     }
 
     private setTiles(cols: number, rows: number): void {

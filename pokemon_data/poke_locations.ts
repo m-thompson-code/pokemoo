@@ -1,4 +1,6 @@
-import { PokemonName, keys } from './pokemon';
+import { PokemonName } from './pokemon';
+
+import { keys } from './helpers';
 
 import * as _pokeLocationDataExportMap from './pokemon_locations/locations';
 
@@ -42,13 +44,14 @@ export type LocationPokemonDataExport = _LocationPokemonDataExport & ({
     inLeafGreen: true;
 });
 
-export interface LocationPokemonData<P extends PokemonName = PokemonName> {
+export type LocationPokemonData<P extends PokemonName = PokemonName, S extends SpawnType = SpawnType> = {
     pokemonName: P;
+    spawnType: S;
 
     mixRate: number;
     mixRatePercent: number;
     totalRate: number;
-}
+} & LocationPokemonDataExport;
 
 // Used for PokeLocationDataExport-like objects that are imported to be used in parts (example is Route 2 -> Route 2 (Viridian) / Route 2 (Pewter))
 export interface _PokeLocationDataExport {
@@ -65,11 +68,11 @@ export interface PokeLocationDataExport<P extends PokeLocation = PokeLocation> e
     pokeLocation: P;
 }
 
-export interface SpawnPokemonData<P extends SpawnType = SpawnType> {
-    spawnType: P;
-    locationPokemonDatas: LocationPokemonData[];
+export interface SpawnPokemonData<S extends SpawnType = SpawnType> {
+    spawnType: S;
+    locationPokemonDatas: LocationPokemonData<PokemonName, S>[];
     locationPokemonDataMap: {
-        [pokemonName in PokemonName]?: LocationPokemonData<pokemonName>;
+        [pokemonName in PokemonName]?: LocationPokemonData<pokemonName, S>;
     }
 }
 
@@ -78,23 +81,9 @@ export interface PokeLocationData<P extends PokeLocation = PokeLocation> {
 
     catchMap: {
         [spawnType in SpawnType]?: SpawnPokemonData<spawnType>;
-        // [spawnType in SpawnType]?: {
-        //     spawnType: spawnType;
-        //     locationPokemonDatas: LocationPokemonData[];
-        //     locationPokemonDataMap: {
-        //         [pokemonName in PokemonName]?: LocationPokemonData<pokemonName>;
-        //     }
-        // }
     };
 
     catchs: SpawnPokemonData[];
-    // catchs: {
-    //     spawnType: SpawnType;
-    //     locationPokemonDatas: LocationPokemonData[];
-    //     locationPokemonDataMap: {
-    //         [pokemonName in PokemonName]?: LocationPokemonData<pokemonName>;
-    //     };
-    // }[];
 
     connections: PokeLocation[];
 }
@@ -328,38 +317,6 @@ export const pokeLocations: PokeLocation[] = [
     "Water Path"
 ];
 
-
-
-// catchMap: {
-//     [spawnType in SpawnType]?: {
-//         [pokemonName in PokemonName]?: LocationPokemonData;
-//     }
-// };
-// connections: PokeLocation[];
-// }
-
-// export interface PokeLocationData<P extends PokeLocation = PokeLocation> extends _PokeLocationDataExport  {
-// pokeLocation: P;
-// catchs: {
-//     spawnType: SpawnType;
-//     locationPokemonDatas: LocationPokemonData[];
-// };
-
-export interface LocationPokemonData<P extends PokemonName = PokemonName> {
-    pokemonName: P;
-
-    mixRate: number;
-    mixRatePercent: number;
-    totalRate: number;
-
-    rate: number;
-    minLevel: number;
-    maxLevel: number;
-    note?: string;
-    inFireRed: boolean;
-    inLeafGreen: boolean;
-}
-
 export const pokeLocationDataMap: PokeLocationDataMap = {} as PokeLocationDataMap;
 
 export const pokeLocationDatas: PokeLocationData[] = [];
@@ -372,9 +329,9 @@ for (const pokeLocation of pokeLocations) {
     const catchMap: {
         [spawnType in SpawnType]?: {
             spawnType: spawnType;
-            locationPokemonDatas: LocationPokemonData[];
+            locationPokemonDatas: LocationPokemonData<PokemonName, spawnType>[];
             locationPokemonDataMap: {
-                [pokemonName in PokemonName]?: LocationPokemonData<pokemonName>;
+                [pokemonName in PokemonName]?: LocationPokemonData<pokemonName, spawnType>;
             }
         }
     } = {
@@ -413,9 +370,9 @@ for (const pokeLocation of pokeLocations) {
 
             const spawnTypeLocationPokemonData: {
                 spawnType: 'Grass';
-                locationPokemonDatas: LocationPokemonData[];
+                locationPokemonDatas: LocationPokemonData<PokemonName, 'Grass'>[];
                 locationPokemonDataMap: {
-                    [pokemonName in PokemonName]?: LocationPokemonData<pokemonName>;
+                    [pokemonName in PokemonName]?: LocationPokemonData<pokemonName, 'Grass'>;
                 }
             } = {
                 spawnType: spawnType as 'Grass',
@@ -446,8 +403,16 @@ for (const pokeLocation of pokeLocations) {
                 const pikachuIsPokemonNameTypeCheck: PokemonName = 'Pikachu';
                 pikachuIsPokemonNameTypeCheck;
 
-                const pokemonLocationData: LocationPokemonData & {pokemonName: "Pikachu"} = {
+                if (!pokemonLocationDataExport.inFireRed && !pokemonLocationDataExport.inLeafGreen) {
+                    console.warn("Unexpected pokemonLocationDataExport not in FireRed or LeafGreen");
+                    debugger;
+                    continue;
+                }
+
+                // Assuming SpawnType is Grass for the same reason above
+                const pokemonLocationData: LocationPokemonData<"Pikachu", "Grass"> = {
                     pokemonName: pokemonName as "Pikachu",
+                    spawnType: spawnType as 'Grass',
 
                     mixRate: 0,
                     mixRatePercent: 0,
@@ -457,8 +422,8 @@ for (const pokeLocation of pokeLocations) {
                     minLevel: pokemonLocationDataExport.minLevel,
                     maxLevel: pokemonLocationDataExport.maxLevel,
                     note: pokemonLocationDataExport.note,
-                    inFireRed: pokemonLocationDataExport.inFireRed,
-                    inLeafGreen: pokemonLocationDataExport.inLeafGreen,
+                    inFireRed: pokemonLocationDataExport.inFireRed as true, // Bypass type check since validation above confirms at least one is true
+                    inLeafGreen: pokemonLocationDataExport.inLeafGreen as true, // Bypass type check since validation above confirms at least one is true
                 };
 
                 spawnTypeLocationPokemonData.locationPokemonDataMap[pokemonName as 'Pikachu'] = pokemonLocationData;
