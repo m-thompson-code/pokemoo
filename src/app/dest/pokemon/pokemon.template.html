@@ -1,0 +1,40 @@
+<div class="container">
+    <div *ngIf="pokemonData">
+        <div class="pokemon-name">
+            {{ pokemonData.pokedexEntry | number:'3.0-0' }} {{ pokemonData.pokemonName }}
+        </div>
+
+        <div *ngIf="pokemonData.evolvedFrom" class="evolves-from">
+            Evolves from {{ pokemonData.evolvedFrom }}
+        </div>
+        
+        <div class="pokemon-locations">
+            Locations found at: 
+
+            <ng-container *ngIf="pokemonData.pokeLocations && pokemonData.pokeLocations.length">
+                <ng-container *ngFor="let pokemonLocationData of pokemonData.pokeLocations; let last = last">
+                    {{ pokemonLocationData.pokeLocation }}{{ last ? '' : ', ' }}
+                </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="!pokemonData.pokeLocations || !pokemonData.pokeLocations.length">
+                (None)
+            </ng-container>
+        </div>
+
+        <div *ngIf="evolutions.length" class="evolutions">
+            Evolution(s): 
+            <div *ngFor="let evolution of evolutions">
+                <div class="pokemon-name">
+                    {{ evolution.pokemonName }} 
+                    <ng-container *ngIf="evolution.atLevel">
+                        at Lv{{ evolution.atLevel }}
+                    </ng-container>
+                    <ng-container *ngIf="evolution.withMethod">
+                        with {{ evolution.withMethod }}
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

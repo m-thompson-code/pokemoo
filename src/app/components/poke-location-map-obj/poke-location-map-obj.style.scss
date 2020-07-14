@@ -5,9 +5,29 @@
 }
 
 .div-container {
-    border-radius: 50%;
+    border-radius: 4px;
     min-height: 16px;
     min-width: 16px;
-    // background: green;
+    background: white;
     white-space: nowrap;
+    padding: 6px 12px;
+}
+.div-container.active {
+    .poke-location {
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: $tabletWidth) {
+    // .div-container {
+    //     border-radius: 50%;
+    //     padding: 0;
+        
+    //     .poke-location {
+    //         display: none;
+    //     }
+    // }
+    // .div-container.active {
+    //     background: red;
+    // }
 }

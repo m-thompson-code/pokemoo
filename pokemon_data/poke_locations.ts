@@ -29,11 +29,16 @@ export type PokemonRoutes = "Route 1" | "Route 8" | "Route 10" | "Route 11" | "R
 
 export type PokeLocation = "Altering Cave" | "Diglett's Cave (Route 2)" | "Diglett's Cave (Route 11)" | "Indego Plateau" | "Pallet Town" | "Pokemon League Front Gate" | "Power Plant" | "Rock Tunnel 1F" | "Rock Tunnel B1F" | "Victory Road 1F" | "Victory Road 2F" | "Victory Road 3F" | "Viridian City" | SegiiIslands | Celadon | Cerulean | Cinnabar | Fuchsia | Lavender | Pewter | Saffron | SeafoamIslands | Vermilion | Viridian | PokemonRoutes;
 
+export type _SpecialCondition = "gift" | "only-one-gift" | "encounter" | "safari";
+export type SpecialCondition = _SpecialCondition | "purchase";
+
 export interface _LocationPokemonDataExport {
     rate: number;
     minLevel: number;
     maxLevel: number;
     note?: string;
+    special?: SpecialCondition;
+    cost?: number;
     inFireRed: boolean;
     inLeafGreen: boolean;
 }
@@ -42,6 +47,12 @@ export type LocationPokemonDataExport = _LocationPokemonDataExport & ({
     inFireRed: true;
 } | {
     inLeafGreen: true;
+}) & ({
+    special: "purchase";
+    cost: number;
+} | {
+    special?: SpecialCondition;
+    cost?: never;
 });
 
 export type LocationPokemonData<P extends PokemonName = PokemonName, S extends SpawnType = SpawnType> = {
@@ -424,6 +435,8 @@ for (const pokeLocation of pokeLocations) {
                     note: pokemonLocationDataExport.note,
                     inFireRed: pokemonLocationDataExport.inFireRed as true, // Bypass type check since validation above confirms at least one is true
                     inLeafGreen: pokemonLocationDataExport.inLeafGreen as true, // Bypass type check since validation above confirms at least one is true
+                    special: pokemonLocationDataExport.special,
+                    cost: pokemonLocationDataExport.cost as never,// Bypass type check
                 };
 
                 spawnTypeLocationPokemonData.locationPokemonDataMap[pokemonName as 'Pikachu'] = pokemonLocationData;

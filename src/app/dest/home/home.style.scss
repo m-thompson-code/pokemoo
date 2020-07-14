@@ -29,6 +29,10 @@
     overflow: hidden;
 }
 .map-wrapper.hide {
+    // overflow: hidden;
+    // width: 0;
+    // height: 0;
+    // visibility: hidden;
     display: none;
 }
 .map {
@@ -46,6 +50,11 @@
     left: 50%;
     
     transform: translate(-50%, -50%);
+
+    z-index: 1;
+}
+.map-obj.active {
+    z-index: 2;
 }
 
 .source-map-wrapper {

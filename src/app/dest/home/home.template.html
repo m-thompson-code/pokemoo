@@ -10,17 +10,14 @@
     <p>Map <a (click)="toggleMap()">+/-</a></p>
     <div [class]="'map-wrapper' + (showMap ? ' show' : ' hide')">
         <div class="map">
-            <moo-line *ngFor="let line of lines" [pointA]="line.pointA" [pointB]="line.pointB"></moo-line>
+            <moo-line #mooLines *ngFor="let line of lines" [lineObj]="line" [pointA]="line.pointA" [pointB]="line.pointB"></moo-line>
 
             <ng-container *ngFor="let pokeLocationMapObj of pokeLocationMapObjs">
-                <moo-poke-location-map-obj #pokeLocationObjs [pokeLocationMapObj]="pokeLocationMapObj" class="map-obj" [style.top]="pokeLocationMapObj.top" [style.left]="pokeLocationMapObj.left">
+                <moo-poke-location-map-obj #pokeLocationObjs (click)="setPokeLocation(pokeLocationMapObj.pokeLocation)" [pokeLocation]="pokeLocation" [pokeLocationMapObj]="pokeLocationMapObj" [class]="'map-obj' + (pokeLocation === pokeLocationMapObj.pokeLocation ? ' active' : '')" [style.top]="pokeLocationMapObj.top" [style.left]="pokeLocationMapObj.left">
                 </moo-poke-location-map-obj>
             </ng-container>
         </div>
     </div>
-    <!-- <div #pointA class="point-a"></div>
-    <div #pointB class="point-b"></div>
-    <moo-line [pointA]="pointA" [pointB]="pointB"></moo-line> -->
 
     <p>Location: {{ pokeLocation }}</p>
     

@@ -1,5 +1,5 @@
-<div #divContainer class="div-container">
-    <ng-container *ngIf="pokeLocationMapObj">
+<div #divContainer [class]="'div-container shadow-border' + (pokeLocation === pokeLocationMapObj.pokeLocation ? ' active' : '')">
+    <div class="poke-location" *ngIf="pokeLocationMapObj">
         {{ pokeLocationMapObj.pokeLocation }}
-    </ng-container>
+    </div>
 </div>

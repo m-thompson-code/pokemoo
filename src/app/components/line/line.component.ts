@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { MapLine } from '@app/dest/home/home.component';
 
 // source: https://stackoverflow.com/questions/19382872/how-to-connect-html-divs-with-lines
 // source: https://jsfiddle.net/rdamasceno/o3Lroapa/5/
@@ -16,6 +17,10 @@ export class LineComponent implements OnInit {
 
     @Input() public pointA?: HTMLElement;
     @Input() public pointB?: HTMLElement;
+
+    @Input() public lineObj?: MapLine;
+
+    @Input() public active?: boolean;
 
     constructor() {
     }

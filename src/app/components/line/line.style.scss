@@ -2,10 +2,18 @@
 
 .line {
     pointer-events: none;
-    position:absolute;
-    width:2px;
-    margin-top:-1px;
-    background-color:rgba(red, .5);
+    position: absolute;
+    width: 2px;
+    margin-top: -1px;
+    background-color: rgba(#929292, .5);
     // backface-visibility: hidden;
     outline: 1px solid transparent;// Actives trigger anti-aliasing on some browsers source: https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome
+    z-index: 0;
+}
+
+.line.active {
+    background-color: rgba(#F44336, .5);
+    z-index: 1;
+    margin-top: -2px;
+    width: 4px;
 }

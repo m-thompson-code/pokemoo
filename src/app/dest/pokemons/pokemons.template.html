@@ -1,0 +1,19 @@
+<div class="container">
+    <div *ngFor="let pokemonData of pokemonDatas">
+        <div class="pokemon-name" [routerLink]="['/pokemon', pokemonData.pokedexEntry | number:'3.0-0']">
+            {{ pokemonData.pokedexEntry | number:'3.0-0' }} {{ pokemonData.pokemonName }}
+        </div>
+        <div class="pokemon-locations">
+            Locations found at: 
+            <ng-container *ngIf="pokemonData.pokeLocations && pokemonData.pokeLocations.length">
+                <ng-container *ngFor="let pokemonLocationData of pokemonData.pokeLocations; let last = last">
+                    {{ pokemonLocationData.pokeLocation }}{{ last ? '' : ', ' }}
+                </ng-container>
+            </ng-container>
+            
+            <ng-container *ngIf="!pokemonData.pokeLocations || !pokemonData.pokeLocations.length">
+                (None)
+            </ng-container>
+        </div>
+    </div>
+</div>
